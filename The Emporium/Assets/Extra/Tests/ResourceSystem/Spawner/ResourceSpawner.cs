@@ -46,7 +46,9 @@ public class ResourceSpawner : MonoBehaviour
 
     private void plantResource()
     {
-        Instantiate(Resource, plant, Quaternion.Euler(0f, Random.Range(0, 360), 0));
+        Vector3 precise = new Vector3(plant.x, plant.y + Resource.transform.localScale.y / 2, plant.z);
+
+        Instantiate(Resource, precise, Quaternion.Euler(0f, Random.Range(0, 360), 0));
 
         amount--;
 
@@ -62,9 +64,15 @@ public class ResourceSpawner : MonoBehaviour
 
         Ray ray = new Ray(pin, Vector3.down);
 
-        if(Physics.Raycast(ray,out hit, Mathf.Infinity))
+        if(Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            plant = hit.point;
+            Debug.Log(hit);
+
+            if (hit.collider.gameObject.tag == "Terrain")
+            {
+                plant = hit.point;
+            }
+            
         }
     }
 
