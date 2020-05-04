@@ -584,6 +584,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResourceSpawnArea
       objectReference: {fileID: 0}
+    - target: {fileID: 5392095749861568714, guid: 480f66c2e0899294d9d7a90453e32de1,
+        type: 3}
+      propertyPath: amount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5392095749861568715, guid: 480f66c2e0899294d9d7a90453e32de1,
         type: 3}
       propertyPath: m_LocalPosition.x

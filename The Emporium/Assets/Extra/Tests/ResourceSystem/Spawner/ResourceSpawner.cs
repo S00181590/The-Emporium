@@ -66,12 +66,12 @@ public class ResourceSpawner : MonoBehaviour
 
         if(Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            Debug.Log(hit);
+            Debug.DrawLine(ray.origin, hit.point,Color.white, 10f);
 
-            if (hit.collider.gameObject.tag == "Terrain")
-            {
-                plant = hit.point;
-            }
+            //if (hit.collider.gameObject.tag == "Terrain")
+            //{
+            //    plant = hit.point;
+            //}
             
         }
     }
