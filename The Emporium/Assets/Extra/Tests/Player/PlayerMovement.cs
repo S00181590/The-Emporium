@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Turning(Vector3 turn)
     {
-        character.transform.rotation = Quaternion.LookRotation(turn);
+        //character.transform.rotation = Quaternion.LookRotation(turn);
     }
 
     private void Moving()
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 MovDirection = new Vector3(x, 0, z);
 
-            transform.Translate(MovDirection);
+            gameObject.transform.Translate(MovDirection);
 
             Turning(MovDirection);
         }

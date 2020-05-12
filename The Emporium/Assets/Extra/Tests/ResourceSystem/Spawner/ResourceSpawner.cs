@@ -6,7 +6,7 @@ public class ResourceSpawner : MonoBehaviour
 {
     Vector3 pin, plant;
 
-    public GameObject Resource;
+    public List<GameObject> Resource;
 
     public process current;
 
@@ -46,9 +46,13 @@ public class ResourceSpawner : MonoBehaviour
 
     private void plantResource()
     {
-        Vector3 precise = new Vector3(plant.x, plant.y + Resource.transform.localScale.y / 2, plant.z);
+        int match = (int)Random.Range(0, Resource.Count);
 
-        Instantiate(Resource, precise, Quaternion.Euler(0f, Random.Range(0, 360), 0));
+        GameObject ToSpawn = Resource[match];
+
+        Vector3 precise = new Vector3(plant.x, plant.y + ToSpawn.transform.localScale.y / 2, plant.z);
+
+        Instantiate(ToSpawn, precise, Quaternion.Euler(0f, Random.Range(0, 360), 0));
 
         amount--;
 
@@ -68,11 +72,11 @@ public class ResourceSpawner : MonoBehaviour
         {
             Debug.DrawLine(ray.origin, hit.point,Color.white, 10f);
 
-            //if (hit.collider.gameObject.tag == "Terrain")
-            //{
-            //    plant = hit.point;
-            //}
-            
+            if (hit.collider.gameObject.tag == "Terrain")
+            {
+                plant = hit.point;
+            }
+
         }
     }
 
