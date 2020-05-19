@@ -2,53 +2,110 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
     bool running = false;
 
     bool cutscene = false;
 
+    private CharacterController controller;
+
     GameObject character;
 
-    float speed = 4;
+    private Vector3 desireDirection;
+
+    Camera cam;
+
+    float speed, x,z;
+
+    [SerializeField] float rotationSpeed = 0.3f;
+    [SerializeField] float allowRotation = 0.1f;
+    [SerializeField] float movementspeed = 4;
+    [SerializeField] float Gravity;
 
     // Start is called before the first frame update
     void Start()
     {
         character = GameObject.Find("Character");
+
+        controller = GetComponent<CharacterController>();
+
+        cam = Camera.main;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        x = Input.GetAxis("Horizontal");
+        z = Input.GetAxis("Vertical");
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
         if (!cutscene)
         {
-            Moving();
+            InputSorter();
             
         }
     }
 
-    private void Turning(Vector3 turn)
+    private void InputSorter()
     {
-        //character.transform.rotation = Quaternion.LookRotation(turn);
-    }
+        speed = new Vector2(x, z).sqrMagnitude;
 
-    private void Moving()
-    {
-        if (running)
+        if(speed > allowRotation)
         {
-
+            Rotating();
         }
         else
         {
-            float x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-            float z = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+            desireDirection = Vector3.zero;
+        }
+    }
 
-            Vector3 MovDirection = new Vector3(x, 0, z);
+    private void Rotating()
+    {
+        if (running)
+        {
+            
+        }
+        else
+        {
+           
+            var forward = cam.transform.forward;
+            var right = cam.transform.right;
 
-            gameObject.transform.Translate(MovDirection);
+            forward.y = 0;
+            forward.Normalize();
+            right.y = 0;
+            right.Normalize();
 
-            Turning(MovDirection);
+            desireDirection = forward * z + right * x;
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desireDirection), rotationSpeed);
+
+            Moving();
+        }
+
+        void Moving()
+        {
+            Gravity -= 9.8f * Time.deltaTime;
+
+            Vector3 MovDirection = desireDirection * (movementspeed * Time.deltaTime);
+            MovDirection = new Vector3(MovDirection.x, Gravity, MovDirection.z);
+            controller.Move(MovDirection);
+
+            if(controller.isGrounded == true)
+            {
+                Gravity = 0f;
+            }
         }
     }
 }
