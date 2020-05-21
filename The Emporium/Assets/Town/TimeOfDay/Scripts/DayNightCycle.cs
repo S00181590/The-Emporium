@@ -8,6 +8,7 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] private Light Sun;
     [SerializeField, Range(0,24)] private float timeofDay;
     [SerializeField] private LightingPreset preset;
+    [SerializeField] private DateTime calendar;
 
     public bool Day;
 
@@ -56,6 +57,13 @@ public class DayNightCycle : MonoBehaviour
         {
             Day = false;
         }
+        if(Day == true)
+        {
+            if(calendar.DayCount == 0)
+            {
+                calendar.DayCount++;
+            }
+        }
 
     }
 
@@ -67,7 +75,7 @@ public class DayNightCycle : MonoBehaviour
 
         if(Application.isPlaying)
         {
-            timeofDay += Time.deltaTime;
+            timeofDay += Time.deltaTime / 20f;
             timeofDay %= 24; //clamp between 0-24, remember this shiz.
             UpdateLighting(timeofDay / 24f);
         }
