@@ -12,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
 
     float speed = 4;
 
+
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,16 +27,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!cutscene)
         {
+   
             Moving();
             
         }
+      
+
     }
 
     private void Turning(Vector3 turn)
     {
         //character.transform.rotation = Quaternion.LookRotation(turn);
     }
-
+    
     private void Moving()
     {
         if (running)
@@ -51,4 +58,6 @@ public class PlayerMovement : MonoBehaviour
             Turning(MovDirection);
         }
     }
+
+   
 }

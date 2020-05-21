@@ -420,7 +420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1609719246755750846
 RectTransform:
   m_ObjectHideFlags: 0
@@ -910,11 +910,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: MainMenu
   pauseMenu: {fileID: 4374030988037997408}
-  IsPaused: 0
+  IsPaused: 1
   Options: {fileID: 0}
   OptionsOpen: 0
   Save: {fileID: 0}
   SaveMenuOpen: 0
+  Load: {fileID: 0}
+  LoadMenuOpen: 0
 --- !u!1 &5283808679894589103
 GameObject:
   m_ObjectHideFlags: 0
