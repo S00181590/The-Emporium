@@ -6,12 +6,16 @@ public class PResourceManager : MonoBehaviour
 {
     public List<GameObject> NearResources = new List<GameObject>();
 
+    public Inventory Inventory;
+
     public GameObject nearest;
 
     // Start is called before the first frame update
     void Start()
     {
         nearest = null;
+
+        Inventory = gameObject.GetComponent<Inventory>();
     }
 
     // Update is called once per frame
@@ -34,7 +38,15 @@ public class PResourceManager : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
-                Destroy(nearest);
+                
+                bool waspickedup = BackupInventory.instance.AddItem(nearest.GetComponent<Resource>().Info);
+
+                if(waspickedup)
+                {
+                    NearResources.Remove(nearest);
+                    Destroy(nearest);
+                }
+               
 
             }
         }
@@ -48,12 +60,14 @@ public class PResourceManager : MonoBehaviour
 
         foreach(GameObject g in near)
         {
-            if(Vector3.Distance(gameObject.transform.position, g.transform.position) < distance)
+
+            if (Vector3.Distance(gameObject.transform.position, g.transform.position) < distance)
             {
                 nearest = g;
 
                 distance = Vector3.Distance(gameObject.transform.position, g.transform.position);
             }
+            
         }
 
         if(nearest != null)

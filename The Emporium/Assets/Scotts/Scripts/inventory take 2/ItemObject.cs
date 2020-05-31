@@ -7,7 +7,8 @@ public enum ItemType
     Potion,
     Equipment,
     Money,
-    StartingEquipment
+    StartingEquipment,
+    Resource
 }
 public abstract class ItemObject :ScriptableObject
 {

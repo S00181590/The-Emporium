@@ -21,51 +21,51 @@ public class UIItem : MonoBehaviour , IPointerClickHandler, IPointerEnterHandler
 
     public void UpdateItem(Item item)
     {
-        this.item = item;
-        if(this.item != null)
-        {
-            spriteImage.color = Color.white;
-            spriteImage.sprite = this.item.icon;
-        }
-        else
-        {
-            spriteImage.color = Color.clear;
-        }
+        //this.item = item;
+        //if(this.item != null)
+        //{
+        //    spriteImage.color = Color.white;
+        //    spriteImage.sprite = this.item.icon;
+        //}
+        //else
+        //{
+        //    spriteImage.color = Color.clear;
+        //}
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (this.item != null)
-        {
-            if (selectedItem.item != null)
-            {
-                Item clone = new Item(selectedItem.item);
-                selectedItem.UpdateItem(this.item);
-                UpdateItem(clone);
-            }
-            else
-            {
-                selectedItem.UpdateItem(this.item);
-                UpdateItem(null);
-            }
-        }
-        else if(selectedItem.item !=null)
-        {
-            UpdateItem(selectedItem.item);
-            selectedItem.UpdateItem(null);
-        }
+        //if (this.item != null)
+        //{
+        //    if (selectedItem.item != null)
+        //    {
+        //        Item clone = new Item(selectedItem.item);
+        //        selectedItem.UpdateItem(this.item);
+        //        UpdateItem(clone);
+        //    }
+        //    else
+        //    {
+        //        selectedItem.UpdateItem(this.item);
+        //        UpdateItem(null);
+        //    }
+        //}
+        //else if(selectedItem.item !=null)
+        //{
+        //    UpdateItem(selectedItem.item);
+        //    selectedItem.UpdateItem(null);
+        //}
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(this.item !=null)
-        {
-            tooltip.GenerattoolTip(this.item);
-        }
+        //if(this.item !=null)
+        //{
+        //    tooltip.GenerattoolTip(this.item);
+        //}
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        tooltip.gameObject.SetActive(false);
+        //tooltip.gameObject.SetActive(false);
     }
 }

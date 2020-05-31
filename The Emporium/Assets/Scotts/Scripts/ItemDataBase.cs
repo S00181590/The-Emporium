@@ -24,26 +24,30 @@ public class ItemDataBase : MonoBehaviour
 
     void BuildDatabase()
     {
-        items = new List<Item>() { 
-            new Item(0, "Rusty Sword", "An old sword.",
-            new Dictionary<string, int>
-            {
-                {"Power",5},
-                {"Defence",5 }
-            }),
-              new Item(1, "old shield", "An old shield.",
-            new Dictionary<string, int>
-            {
-                {"Power",0},
-                {"Defence",10 }
-            }),
-                new Item(2, "Old Pickaxe", "An old Pickaxe can be used to mine ores .",
-            new Dictionary<string, int>
-            {
-                {"Power",5},
-                {"Mining",100 }
-            })
-            
-            };
+        //items = new List<Item>() { 
+        //    new Item(0, "Rusty Sword", "An old sword.",
+        //    new Dictionary<string, int>
+        //    {
+        //        {"Power",5},
+        //        {"Defence",5 }
+        //    }),
+        //      new Item(1, "old shield", "An old shield.",
+        //    new Dictionary<string, int>
+        //    {
+        //        {"Power",0},
+        //        {"Defence",10 }
+        //    }),
+        //        new Item(2, "Old Pickaxe", "An old Pickaxe can be used to mine ores .",
+        //    new Dictionary<string, int>
+        //    {
+        //        {"Power",5},
+        //        {"Mining",100 }
+        //    }),
+        //    new Item(3, "Rock", "It's a rock...",
+        //    new Dictionary<string, int>
+        //    {
+                
+        //    })
+        //    };
     }
 }

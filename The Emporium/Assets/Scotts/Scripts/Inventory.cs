@@ -13,8 +13,8 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         GiveItem(0);
-        GiveItem(1);
-        RemoveItem(2);
+        //GiveItem(1);
+        //RemoveItem(2);
     }
 
     private void Update()
@@ -23,9 +23,8 @@ public class Inventory : MonoBehaviour
         {
             inventoryUI.gameObject.SetActive(!inventoryUI.gameObject.activeSelf);
         }
-
-        
     }
+
     public void GiveItem(int id)
     {
         Item itemToAdd = ItemDataBase.GetItem(id);
