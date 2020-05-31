@@ -25,12 +25,13 @@ public class CameraController : MonoBehaviour
     void Update()
     {
 
-        //float x = Input.GetAxis("Mouse X") * 20f * Time.deltaTime;
+        //float x = Input.GetAxis("X") * 20f * Time.deltaTime;
+
 
         //character.transform.Rotate(new Vector3(0, x, 0));
 
         //gameObject.transform.localposition = new Vector3(transform.position.x,character.transform.position.y, transform.position.z);
     }
 
-    
+
 }

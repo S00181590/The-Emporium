@@ -9,6 +9,7 @@ public class Inventory : MonoBehaviour
     public ItemDataBase ItemDataBase;
     public UIInventory inventoryUI;
 
+    public int playersMoney;
 
     private void Start()
     {

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -25,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float movementspeed = 4;
     [SerializeField] float Gravity;
 
+
+    public float dogdeSpeed = 60;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,10 +50,9 @@ public class PlayerMovement : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return;
-        }
+
+
+
         if (!cutscene)
         {
             InputSorter();
@@ -109,6 +109,14 @@ public class PlayerMovement : MonoBehaviour
             if(controller.isGrounded == true)
             {
                 Gravity = 0f;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                MovDirection = desireDirection * (dogdeSpeed * Time.deltaTime);
+                MovDirection = new Vector3(MovDirection.x, Gravity, MovDirection.z);
+                controller.Move(MovDirection);
+
             }
         }
     }
