@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float movementspeed = 4;
     [SerializeField] float Gravity;
 
+
+    public float dogdeSpeed = 60;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +50,8 @@ public class PlayerMovement : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+
+
 
         if (!cutscene)
         {
@@ -105,6 +109,14 @@ public class PlayerMovement : MonoBehaviour
             if(controller.isGrounded == true)
             {
                 Gravity = 0f;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                MovDirection = desireDirection * (dogdeSpeed * Time.deltaTime);
+                MovDirection = new Vector3(MovDirection.x, Gravity, MovDirection.z);
+                controller.Move(MovDirection);
+
             }
         }
     }

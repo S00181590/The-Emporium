@@ -24,13 +24,13 @@ public class PauseMenu : MonoBehaviour
         LoadMenuOpen = false;
     }
     // Update is called once per frame
-    void Update()
+   public  void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             IsPaused = !IsPaused;
         }
-        else if(IsPaused)
+        if(IsPaused)
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
@@ -39,8 +39,8 @@ public class PauseMenu : MonoBehaviour
 
         else if (!IsPaused)
         {
-            pauseMenu.SetActive(true);
-            Time.timeScale = 0f;
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1f;
         }
         else if (OptionsOpen)
         {
@@ -55,7 +55,7 @@ public class PauseMenu : MonoBehaviour
         else if(SaveMenuOpen)
         {
             Save.SetActive(true);
-            Time.timeScale = 1f;
+            Time.timeScale = 0f;
         }
         else if(!SaveMenuOpen)
         {
@@ -65,7 +65,7 @@ public class PauseMenu : MonoBehaviour
         else if (LoadMenuOpen)
         {
             Save.SetActive(true);
-            Time.timeScale = 1f;
+            Time.timeScale = 0f;
         }
         else if (!LoadMenuOpen)
         {

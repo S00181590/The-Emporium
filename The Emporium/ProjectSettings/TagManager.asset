@@ -7,6 +7,7 @@ TagManager:
   - Terrain
   - Resource
   - PathNode
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -1,20 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 [System.Serializable]
 public class PlayerData
 {
+    public Slider healthslider;
+    public float  PlayersHealth;
+    public float MaxHealth;
     public decimal money;
-    public int health;
     public int stamina;
     public float movementSpeed;
     public float[] position;
-
     //cons to get the infomation form Playerstas
     public PlayerData(PlayerStats player )
     {
+        healthslider = player.healthslider;
         money = player.money;
-        health = player.health;
+        PlayersHealth = player.PlayersHealth;
+        MaxHealth = player.MaxHealth;
         stamina = player.stamina;
         movementSpeed = player.movementSpeed;
         position = new float[3];//storeing the player pos useing an array to hold his x y and z cords
