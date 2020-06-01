@@ -5626,7 +5626,7 @@ GameObject:
   - component: {fileID: 561823377}
   - component: {fileID: 561823376}
   m_Layer: 8
-  m_Name: CityTerrain
+  m_Name: WorldTerrain
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
