@@ -55,7 +55,7 @@ public class EnemeyHealth : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        if(other.tag.Equals("Arrow"))
+        if(other.tag.Equals("PlayersArrow"))
         {
             health -= 10;
         }

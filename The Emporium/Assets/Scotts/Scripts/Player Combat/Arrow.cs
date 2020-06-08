@@ -33,7 +33,7 @@ public class Arrow : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag != "Arrow")//check if arrow hit somethingand stops arrows form pileing  up 
+        if (collision.collider.tag != "PlayersArrow")//check if arrow hit somethingand stops arrows form pileing  up 
         {
             HasHitTarget = true;
             ÀrrowStickOnhit();

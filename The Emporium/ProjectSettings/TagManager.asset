@@ -8,6 +8,8 @@ TagManager:
   - Resource
   - PathNode
   - Enemy
+  - PlayersArrow
+  - EnemyArrow
   layers:
   - Default
   - TransparentFX
