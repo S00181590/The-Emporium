@@ -248,9 +248,10 @@ GameObject:
   - component: {fileID: 8093563605919536388}
   - component: {fileID: 3530752843757362543}
   - component: {fileID: 4216387970334839915}
+  - component: {fileID: 6367522493685780715}
   m_Layer: 0
-  m_Name: WoodWorkBench
-  m_TagString: Untagged
+  m_Name: WoodWorkTable
+  m_TagString: CraftTable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -301,6 +302,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.9649942, y: 1.9193772, z: 3.4380145}
   m_Center: {x: -0.37056583, y: -0.69272375, z: 0.7182625}
+--- !u!114 &6367522493685780715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5046640651778385687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e3ad66f4f4d034bb647cdf1e6ac925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inrange: 0
 --- !u!1 &7345518418583030960
 GameObject:
   m_ObjectHideFlags: 0

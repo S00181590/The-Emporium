@@ -42,9 +42,32 @@ public class ItemSlot : MonoBehaviour
     {
         if(item != null)
         {
+            if(GameObject.Find("CraftFrame").activeSelf == true)
+            {
+                if(GameObject.Find("CombinePanel").GetComponent<TakeInResource>().items.Count < 3)
+                {
+                    Debug.Log("Adding item "+item.title+" to crafting");
+                    item.AddToCraft();
+                    BackupInventory.instance.Remove(item);
+                }
+
+            }
+
             item.Use();
         }
     }
+
+    //public void OnMouseDrag()
+    //{
+    //    icon.transform.localPosition = Input.mousePosition;
+    //}
+
+    public void ClickDrag()
+    {
+
+    }
+
+    
 
     
 

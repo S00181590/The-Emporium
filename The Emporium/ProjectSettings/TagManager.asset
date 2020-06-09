@@ -8,6 +8,8 @@ TagManager:
   - Resource
   - PathNode
   - Enemy
+  - Arrow
+  - CraftTable
   layers:
   - Default
   - TransparentFX

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2007408791226779453}
   - component: {fileID: 7083771166953825836}
+  - component: {fileID: 3333526919085519809}
   m_Layer: 5
   m_Name: ItemSlot
   m_TagString: Untagged
@@ -52,6 +53,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 175479906970867642}
   removebutton: {fileID: 1377455519351373870}
+--- !u!61 &3333526919085519809
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303774772413625444}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 25.77, y: -49.88}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 80, y: 80}
+  m_EdgeRadius: 0
 --- !u!1 &6676599798515369795
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +347,7 @@ GameObject:
   - component: {fileID: 6282244596956490735}
   - component: {fileID: 5657733782393719267}
   - component: {fileID: 175479906970867642}
+  - component: {fileID: 3660397182738672055}
   m_Layer: 5
   m_Name: ItemIcon
   m_TagString: Untagged
@@ -382,3 +410,29 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!61 &3660397182738672055
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8837672703143999282}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.44127274, y: -1.1438007}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 80, y: 80}
+  m_EdgeRadius: 0

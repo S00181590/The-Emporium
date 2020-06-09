@@ -8,7 +8,7 @@ public class InventoryUI : MonoBehaviour
 
     public GameObject inventoryUI;
 
-    public Transform itemslotParent;
+    public GameObject itemslotParent;
 
     float normal;
 
@@ -21,6 +21,10 @@ public class InventoryUI : MonoBehaviour
         inventory = BackupInventory.instance;
         inventory.changedCallback += UpdateUI;
 
+        //inventoryUI = GameObject.Find("PlayerInventory");
+
+        //itemslotParent = GameObject.Find("Inventory");
+
         slots = itemslotParent.GetComponentsInChildren<ItemSlot>();
 
     }
@@ -30,7 +34,6 @@ public class InventoryUI : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.I))
         {
-            
 
             if(Cursor.lockState == CursorLockMode.Locked)
             {
