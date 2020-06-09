@@ -9,24 +9,26 @@ public class SettingsMenu : MonoBehaviour
     public GameOptions gameOptions;
 
     public Toggle fullScreenToggle;
-    public Toggle VSyncEnabled;
+   // public Toggle VSyncEnabled;
     public Dropdown ResoulionDropDownSettings;
     public Dropdown TextureDetailsSettings;
-    public Dropdown DayTimeCycle;
+   // public Dropdown DayTimeCycle;
     public Slider MusicVolumeSlider;
 
     public Resolution[] resolutions;//storeing al resolutions to be retunred
     public Button buttonApply;
     public AudioSource MusicSources;
 
-    private void OnEnable()
+     void OnEnable()
     {
         gameOptions = new GameOptions();
+
         fullScreenToggle.onValueChanged.AddListener(delegate { EnableFullScreen(); });
         ResoulionDropDownSettings.onValueChanged.AddListener(delegate { setResolution(); });
         TextureDetailsSettings.onValueChanged.AddListener(delegate { setTextureQuailty(); });
         MusicVolumeSlider.onValueChanged.AddListener(delegate { SettingtheVolume(); });
-        VSyncEnabled.onValueChanged.AddListener(delegate { EnableVSync(); });
+        buttonApply.onClick.AddListener(delegate { OnButtonApplyClick(); });
+       // VSyncEnabled.onValueChanged.AddListener(delegate { EnableVSync(); });
 
         ResoulionDropDownSettings.ClearOptions();
         List<string> resoultionOptions = new List<string>();
@@ -60,10 +62,10 @@ public class SettingsMenu : MonoBehaviour
         gameOptions.FullScreen = Screen.fullScreen = fullScreenToggle.isOn;
     }
 
-    public void EnableVSync()
-    {
-        gameOptions.VSync = VSyncEnabled.enabled = VSyncEnabled;
-    }
+    //public void EnableVSync()
+    //{
+    //    gameOptions.VSync = VSyncEnabled.enabled = VSyncEnabled;
+    //}
 
     public void SaveSettings()
     {
@@ -84,9 +86,9 @@ public class SettingsMenu : MonoBehaviour
         Screen.fullScreen = gameOptions.FullScreen;
         ResoulionDropDownSettings.RefreshShownValue();
 
-        //might have to change 
-        VSyncEnabled.isOn = gameOptions.VSync;
-        VSyncEnabled.enabled = gameOptions.VSync;
+        ////might have to change 
+        //VSyncEnabled.isOn = gameOptions.VSync;
+        //VSyncEnabled.enabled = gameOptions.VSync;
     }
 }
 

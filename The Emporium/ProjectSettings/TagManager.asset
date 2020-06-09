@@ -8,8 +8,13 @@ TagManager:
   - Resource
   - PathNode
   - Enemy
+<<<<<<< HEAD
   - Arrow
   - CraftTable
+=======
+  - PlayersArrow
+  - EnemyArrow
+>>>>>>> Scott
   layers:
   - Default
   - TransparentFX

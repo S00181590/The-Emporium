@@ -12,9 +12,12 @@ public class PauseMenu : MonoBehaviour
     public GameObject Options;
     public bool OptionsOpen;
     public GameObject Save;
+
+
     public bool SaveMenuOpen;
     public GameObject Load;
     public bool LoadMenuOpen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,7 @@ public class PauseMenu : MonoBehaviour
         {
             IsPaused = !IsPaused;
         }
+
         if(IsPaused)
         {
             pauseMenu.SetActive(true);
@@ -52,26 +56,26 @@ public class PauseMenu : MonoBehaviour
             Options.SetActive(false);
             Time.timeScale = 1f;
         }
-        else if(SaveMenuOpen)
-        {
-            Save.SetActive(true);
-            Time.timeScale = 0f;
-        }
-        else if(!SaveMenuOpen)
-        {
-            Options.SetActive(false);
-            Time.timeScale = 1f;
-        }
-        else if (LoadMenuOpen)
-        {
-            Save.SetActive(true);
-            Time.timeScale = 0f;
-        }
-        else if (!LoadMenuOpen)
-        {
-            Options.SetActive(false);
-            Time.timeScale = 1f;
-        }
+        //else if(SaveMenuOpen)
+        //{
+        //    Save.SetActive(true);
+        //    Time.timeScale = 0f;
+        //}
+        //else if(!SaveMenuOpen)
+        //{
+        //    Options.SetActive(false);
+        //    Time.timeScale = 1f;
+        //}
+        //else if (LoadMenuOpen)
+        //{
+        //    Save.SetActive(true);
+        //    Time.timeScale = 0f;
+        //}
+        //else if (!LoadMenuOpen)
+        //{
+        //    Options.SetActive(false);
+        //    Time.timeScale = 1f;
+        //}
     }
 
     public void ResumeTheGame()
@@ -91,19 +95,19 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    public void SaveMenu()
-    {
-        SaveMenuOpen = true;
-        Save.SetActive(true);
-        Time.timeScale = 0f;
-    }
+    //public void SaveMenu()
+    //{
+    //    SaveMenuOpen = true;
+    //    Save.SetActive(true);
+    //    Time.timeScale = 0f;
+    //}
 
-    public void LoadMenu()
-    {
-        LoadMenuOpen = true;
-        Save.SetActive(true);
-        Time.timeScale = 0f;
-    }
+    //public void LoadMenu()
+    //{
+    //    LoadMenuOpen = true;
+    //    Save.SetActive(true);
+    //    Time.timeScale = 0f;
+    //}
 
     public void ReturnToMainMenu()
     {
