@@ -48,30 +48,17 @@ public class TakeInResource : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            if (dis[i].sprite.name == "inventoryslots")
+            if (items[i] != null)
             {
-                if (items[i] != null)
-                {
-                    dis[i].sprite = items[i].icon;
-                }
-                else
-                {
-                    dis[i].sprite = icon;
-                }
-
+                dis[i].sprite = items[i].icon;
             }
             else
             {
-                if (items[i] != null)
-                {
-                    dis[i].sprite = items[i].icon;
-                }
-                else
-                {
-                    dis[i].sprite = icon;
-                }
+                dis[i].sprite = icon;
             }
+            
         }
+        
     }
 
 }

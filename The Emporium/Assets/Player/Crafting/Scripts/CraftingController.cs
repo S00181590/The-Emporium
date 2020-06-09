@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CraftingController : MonoBehaviour
 {
-    public GameObject materialpanel, ResultPanel;
+    public GameObject materialpanel, ResultPanel, mainCamera, CraftCamera;
 
     private bool match;
 
@@ -14,11 +15,24 @@ public class CraftingController : MonoBehaviour
     void Start()
     {
         materialpanel = GameObject.Find("CombinePanel");
+
+        mainCamera = GameObject.Find("Main_ThirdPersonCamera");
+
+        CraftCamera = GameObject.Find("Crafting_Cam");
+
+        CraftCamera.SetActive(false);
     }
 
     private void Update()
     {
         GetResult();
+    }
+
+    public void SetNewCamera()
+    {
+        mainCamera.SetActive(!mainCamera.activeSelf);
+
+        CraftCamera.SetActive(!CraftCamera.activeSelf);
     }
 
     void GetResult()
@@ -77,6 +91,12 @@ public class CraftingController : MonoBehaviour
 
         TakeInResource.instance.items.Clear();
 
+        foreach(Image i in TakeInResource.instance.dis)
+        {
+            i.sprite = TakeInResource.instance.icon;
+        }
+        
+
         BackupInventory.instance.changedCallback.Invoke();
     }
 
@@ -88,6 +108,13 @@ public class CraftingController : MonoBehaviour
         }
 
         TakeInResource.instance.items.Clear();
+
+        foreach (Image i in TakeInResource.instance.dis)
+        {
+            i.sprite = TakeInResource.instance.icon;
+        }
+
+        SetNewCamera();
 
         GameObject.Find("CraftFrame").SetActive(false);
 

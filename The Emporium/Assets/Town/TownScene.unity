@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.73
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.24333334
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -6458,7 +6458,7 @@ PrefabInstance:
     - target: {fileID: 7092952778828938392, guid: a57338ffc5dd2eb48ae2bf620f220384,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 42.410553
+      value: 54.8
       objectReference: {fileID: 0}
     - target: {fileID: 7092952778828938392, guid: a57338ffc5dd2eb48ae2bf620f220384,
         type: 3}
@@ -6505,6 +6505,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy test (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7092952778828938393, guid: a57338ffc5dd2eb48ae2bf620f220384,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7185172033944175055, guid: a57338ffc5dd2eb48ae2bf620f220384,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -6544,6 +6549,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221644022199768551, guid: a57338ffc5dd2eb48ae2bf620f220384,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9221644022461747770, guid: a57338ffc5dd2eb48ae2bf620f220384,
         type: 3}
@@ -12899,7 +12909,7 @@ PrefabInstance:
     - target: {fileID: 4824612245143913433, guid: 7d487ba3d81ff7e42999e34a7c9d91ad,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d487ba3d81ff7e42999e34a7c9d91ad, type: 3}
@@ -13202,7 +13212,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5209862523588421799}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.33, y: 5.3, z: 50.008}
+  m_LocalPosition: {x: -30.1, y: 5.3, z: 58.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 839386848}

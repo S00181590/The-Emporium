@@ -57,18 +57,5 @@ public class ItemSlot : MonoBehaviour
         }
     }
 
-    //public void OnMouseDrag()
-    //{
-    //    icon.transform.localPosition = Input.mousePosition;
-    //}
-
-    public void ClickDrag()
-    {
-
-    }
-
-    
-
-    
 
 }

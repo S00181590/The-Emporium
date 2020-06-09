@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class CraftingTable : MonoBehaviour
 {
-    GameObject player, craftUI;
+    GameObject player, craftUI, craftCanvas;
+
+    Camera camera;
 
     public bool inrange = false;
-    public bool cancelling = true;
+    public bool cancelling = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        camera = Camera.main;
+
         player = GameObject.Find("Character");
 
         craftUI = GameObject.Find("CraftFrame");
+
+        craftCanvas = GameObject.Find("CraftCanvas");
+
+        craftCanvas.GetComponent<Canvas>().worldCamera = camera;
 
         craftUI.SetActive(false);
     }
@@ -29,6 +37,8 @@ public class CraftingTable : MonoBehaviour
                 craftUI.SetActive(!craftUI.activeSelf);
 
                 player.GetComponent<PlayerMovement>().cutscene = craftUI.activeSelf;
+
+                GameObject.Find("CraftingPanel").GetComponent<CraftingController>().SetNewCamera();
             }
         }
         else
