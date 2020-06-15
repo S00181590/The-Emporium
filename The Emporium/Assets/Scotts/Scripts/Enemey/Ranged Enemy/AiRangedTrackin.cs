@@ -6,8 +6,8 @@ public class AiRangedTrackin : MonoBehaviour
 {
     public float trackingSpeed;
     public GameObject TargetSelcted = null;
-    Vector3 PlayersLastKnownLocation;
-
+    // Vector3 PlayersLastKnownLocation;
+    Vector3 PlayersLastKnownLocation = Vector3.zero;
     Quaternion FiledOfViewRadius;
 
 
