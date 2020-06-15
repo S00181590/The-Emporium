@@ -5,39 +5,39 @@ using UnityEngine;
 public class NormalProjechtilies : BaseProjectile
 {
     Vector3 direction;
-    GameObject Gametarget;
-    GameObject Shotter;
-    int DamageAmount;
-    Vector3 Direction;
-    bool CanFire;
+   // GameObject Gametarget;
+  //  GameObject Shooter;
+//int Damage;
+    //Vector3 Direction;
+    bool canFire;
 
-   
     void Update()
     {
-        if(CanFire)
+        if (canFire)
         {
-            transform.position += direction *(speed * Time.deltaTime);
+            transform.position += direction * (speed * Time.deltaTime);
         }
     }
 
-    public override void FireProjectileNow(GameObject ShotterObjecht, GameObject target, int damage, float AttackRate)
+    public override void fireProjechtile(GameObject Shoterobjecht, GameObject target, int damage/*, float attackspeed*/)
     {
-       if(ShotterObjecht && target)
+        if (Shoterobjecht && target)
         {
-            direction = (target.transform.position - ShotterObjecht.transform.position).normalized;
-            CanFire = true;
-            Shotter = ShotterObjecht;
-            Gametarget = target;
-            DamageAmount = damage;
-            Destroy(gameObject, 15f);
+            direction = (target.transform.position - Shoterobjecht.transform.position).normalized;
+            canFire = true;
+            //Shooter = Shoterobjecht;
+            //Gametarget = target;
+           // Damage = damage;
+           // Destroy(gameObject, 10f);
         }
     }
 
-    public void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.GetComponent<BaseProjectile>()==null)
-        {
+        if (collision.gameObject.GetComponent<BaseProjectile>() == null)
             Destroy(gameObject);
-        }
     }
+
+
+
 }
