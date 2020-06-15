@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CraftingTable : MonoBehaviour
 {
-    GameObject player, craftUI, craftCanvas;
+    GameObject player, craftUI, craftCanvas, inventoryUI;
 
     Camera camera;
 
@@ -15,6 +15,8 @@ public class CraftingTable : MonoBehaviour
     void Start()
     {
         camera = Camera.main;
+
+        inventoryUI = GameObject.Find("InventoryCanvas");
 
         player = GameObject.Find("Character");
 
@@ -38,6 +40,21 @@ public class CraftingTable : MonoBehaviour
 
                 player.GetComponent<PlayerMovement>().cutscene = craftUI.activeSelf;
 
+                //inventoryUI.GetComponent<InventoryUI>().crafting = !inventoryUI.GetComponent<InventoryUI>().crafting;
+
+                inventoryUI.GetComponent<InventoryUI>().uiSwitch();
+
+                //if (Cursor.lockState == CursorLockMode.Locked)
+                //{
+                //    Cursor.lockState = CursorLockMode.None;
+                //}
+                //else
+                //{
+                //    Cursor.lockState = CursorLockMode.Locked;
+                //}
+                ////Cursor.lockState = CursorLockMode.None;
+                //Cursor.visible = !Cursor.visible;
+
                 GameObject.Find("CraftingPanel").GetComponent<CraftingController>().SetNewCamera();
             }
         }
@@ -51,6 +68,9 @@ public class CraftingTable : MonoBehaviour
         if(cancelling)
         {
             craftUI.SetActive(false);
+
+            inventoryUI.GetComponent<InventoryUI>().inventoryUI.SetActive(false);
+            
 
             player.GetComponent<PlayerMovement>().cutscene = false;
 

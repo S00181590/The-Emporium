@@ -45,6 +45,9 @@ public class PResourceManager : MonoBehaviour
                 {
                     NearResources.Remove(nearest);
                     Destroy(nearest);
+
+                    NearResources = new List<GameObject>();
+                    
                 }
                
 

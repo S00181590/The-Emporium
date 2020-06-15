@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5388f599e95597449b129f5c69ae9d7, type: 3}
   m_Name: Stick
   m_EditorClassIdentifier: 
-  id: 0
+  id: 2
   title: Stick
   descrption: Bruh... Really? It... it's a stick...
-  icon: {fileID: 0}
+  physical: {fileID: 7838548151301492588, guid: 4788e5ce3c8aacb4ea003131b718f113,
+    type: 3}
+  icon: {fileID: 21300000, guid: ff5996f586a53be40891cac486a4ff12, type: 3}
   isDefaultItem: 0

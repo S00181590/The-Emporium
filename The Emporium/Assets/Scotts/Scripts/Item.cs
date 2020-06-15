@@ -10,6 +10,7 @@ public class Item : ScriptableObject
     public int  id = 0;
     public string title = "New Item";
     public string descrption = "This is an item";
+    public GameObject physical;
     public Sprite icon = null;
     public bool isDefaultItem = false;
     public Dictionary<string, int> stats = new Dictionary<string, int>();

@@ -5,22 +5,38 @@ using UnityEngine.UI;
 
 public class CraftingController : MonoBehaviour
 {
-    public GameObject materialpanel, ResultPanel, mainCamera, CraftCamera;
+    public GameObject materialpanel, ResultPanel, mainCamera, CraftCamera, inventoryUI;
+
+    public RecipeBook recipes, knownRecipes;
+
+    public DisplayItemDetails itemDetails;
+
+    Recipe correctrecipe;
 
     private bool match;
 
     private Item result;
 
+    public Sprite unknown;
+
+    Sprite defImage;
+
     // Start is called before the first frame update
     void Start()
     {
-        materialpanel = GameObject.Find("CombinePanel");
+        materialpanel = GameObject.Find("ShopStateSave").GetComponent<ShopStatesReference>().materialPanel;
 
         mainCamera = GameObject.Find("Main_ThirdPersonCamera");
 
         CraftCamera = GameObject.Find("Crafting_Cam");
 
+        inventoryUI = GameObject.Find("InventoryCanvas");
+
         CraftCamera.SetActive(false);
+
+        defImage = ResultPanel.GetComponent<Image>().sprite;
+
+        itemDetails = GameObject.Find("InventoryCanvas").GetComponent<DisplayItemDetails>();
     }
 
     private void Update()
@@ -42,16 +58,96 @@ public class CraftingController : MonoBehaviour
 
         resID = SortItemString();
 
-
-
-        if(match)
+        foreach(Recipe R in recipes.recipes)
         {
+            if(R.RecipeCode == resID)
+            {
+                result = R.result;
+
+                correctrecipe = R;
+            }
+        }
+
+        foreach(Recipe k in knownRecipes.recipes)
+        {
+            if(k == correctrecipe)
+            {
+                match = true;
+                break;
+            }
+            else
+            {
+                match = false;
+            }
+        }
+
+        if(result != null)
+        {
+            if(match)
+            {
+                ResultPanel.GetComponent<Image>().sprite = result.icon;
+            }
+            else
+            {
+                ResultPanel.GetComponent<Image>().sprite = unknown;
+            }
 
         }
         else
         {
+            ResultPanel.GetComponent<Image>().sprite = defImage;
+        }
+
+
+    }
+
+    public void hoverdetails()
+    {
+        if (result != null)
+        {
+            if(match)
+            {
+                if (itemDetails.gameObject.activeSelf == true)
+                {
+                    itemDetails.toDisplay = result;
+                }
+            }
+            else
+            {
+
+            }
             
         }
+        else
+        {
+            itemDetails.toDisplay = null;
+        }
+    }
+
+    public void ConfirmCraft()
+    {
+        if (result != null)
+        {
+
+
+            BackupInventory.instance.inventory.Add(result);
+
+            if (!knownRecipes.recipes.Contains(correctrecipe))
+            {
+                knownRecipes.recipes.Add(correctrecipe);
+            }
+
+            TakeInResource.instance.items.Clear();
+
+            foreach (Image i in TakeInResource.instance.dis)
+            {
+                i.sprite = TakeInResource.instance.icon;
+            }
+
+            result = null;
+        }
+
+        BackupInventory.instance.changedCallback.Invoke();
     }
 
     string SortItemString()
@@ -84,18 +180,21 @@ public class CraftingController : MonoBehaviour
 
     void updatlist()
     {
-        foreach(Item i in TakeInResource.instance.items)
+        if (TakeInResource.instance.items.Count > 0)
         {
-            BackupInventory.instance.inventory.Add(i);
-        }
 
-        TakeInResource.instance.items.Clear();
+            foreach (Item i in TakeInResource.instance.items)
+            {
+                BackupInventory.instance.inventory.Add(i);
+            }
 
-        foreach(Image i in TakeInResource.instance.dis)
-        {
-            i.sprite = TakeInResource.instance.icon;
+            TakeInResource.instance.items.Clear();
+
+            foreach (Image i in TakeInResource.instance.dis)
+            {
+                i.sprite = TakeInResource.instance.icon;
+            }
         }
-        
 
         BackupInventory.instance.changedCallback.Invoke();
     }
@@ -117,6 +216,11 @@ public class CraftingController : MonoBehaviour
         SetNewCamera();
 
         GameObject.Find("CraftFrame").SetActive(false);
+
+        inventoryUI.GetComponent<InventoryUI>().inventoryUI.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         GameObject.Find("Character").GetComponent<PlayerMovement>().cutscene = false;
 

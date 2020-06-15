@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     bool running = false;
 
-    public bool cutscene = false;
+    public bool cutscene;
 
     private CharacterController controller;
 
@@ -19,16 +19,18 @@ public class PlayerMovement : MonoBehaviour
 
     float speed, x,z;
 
-    [SerializeField] float rotationSpeed = 0.3f;
-    [SerializeField] float allowRotation = 0.1f;
-    [SerializeField] float movementspeed = 4;
-    [SerializeField] float Gravity;
+    [SerializeField] public float rotationSpeed = 0.3f;
+    [SerializeField] public float allowRotation = 0.1f;
+    [SerializeField] public float movementspeed = 4;
+    [SerializeField] public float Gravity;
 
 
     public float dogdeSpeed = 60;
     // Start is called before the first frame update
     void Start()
     {
+        cutscene = false;
+
         character = GameObject.Find("Character");
 
         controller = GetComponent<CharacterController>();
