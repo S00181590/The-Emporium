@@ -19,15 +19,11 @@ public class PlayerStats : MonoBehaviour
     GameObject objecht;
     private bool collided;
 
-    GameObject Gameover;
+
 
     public decimal money = 0;
     public float movementSpeed = 5;
 
-    public float CurrenTime;
-    public  float StartingTime;
-
-    [SerializeField] Text AutosaveText;
     //public void OnTriggerEnter(Collider other)
     //{
     //    collided = true;
@@ -40,8 +36,6 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-
-        CurrenTime = StartingTime;
         PlayersStamina = MaxStamina;
         PlayersMana = MaxMana;
         PlayersHealth = MaxHealth;
@@ -68,41 +62,20 @@ public class PlayerStats : MonoBehaviour
      
         if (PlayersHealth <= 0)
         {
-            
             Destroy(gameObject);
-            Time.timeScale = 1f;
-            FindObjectOfType<GameOver>().gameoverScreen.SetActive(true);
         }
-      
 
         if (PlayersHealth >= MaxHealth)
         {
             PlayersHealth = MaxHealth;
-            FindObjectOfType<GameOver>().gameoverScreen.SetActive(false);
         }
 
         if(PlayersMana >= MaxMana)
         {
             PlayersMana = MaxMana;
         }
-
-        CurrenTime += 1 * Time.deltaTime;
-        if (CurrenTime >= 800)
-        {
-            SaveMangerSystem.SavePlayerData(this);
-            //AutosaveText.gameObject.SetActive(true);
-          
-            Debug.Log("autoSaved");
-            CurrenTime = 0;
-
-        }
-        //else
-        //{
-        //    AutosaveText.gameObject.SetActive(false);
-        //}
     }
 
-   
     float GetCurrentStamina()
     {
         return PlayersStamina / MaxStamina;
@@ -122,16 +95,7 @@ public class PlayerStats : MonoBehaviour
         SaveMangerSystem.SavePlayerData(this);
 
     }
-   public void AutoSave()
-    {
-        //ElaspedTime += Time.deltaTime;
-        //if(ElaspedTime >= timerspeed)
-        //{
-        //    Debug.Log("autosave");
-        //    ElaspedTime = 0f;
-        //    SaveMangerSystem.SavePlayerData(this);
-        //}
-    }
+   
    
     public void LoadPlayer()
     {
@@ -179,17 +143,14 @@ public class PlayerStats : MonoBehaviour
         }
 
     }
-    //void takedamage(float amount)
-    //{
+    void takedamage(float amount)
+    {
 
-    //    PlayersHealth -= amount;
-    //    if(PlayersHealth <=0)
-    //    {
-    //        //Destroy(gameObject);
-    //       FindObjectOfType<GameManager>().GameOver();
-          
-          
-    //    }
+        PlayersHealth -= amount;
+        if(PlayersHealth <=0)
+        {
+            Destroy(gameObject);
+        }
 
             //if (Input.GetKeyDown(KeyCode.R))
             //{ if (PlayersHealth > 0) PlayersHealth = PlayersHealth - 20; }
@@ -197,7 +158,7 @@ public class PlayerStats : MonoBehaviour
 
             //if (Input.GetKeyDown(KeyCode.T))
             //{ if (PlayersHealth >= 0) PlayersHealth = PlayersHealth + 20; }
-    //}
+    }
    
 
 

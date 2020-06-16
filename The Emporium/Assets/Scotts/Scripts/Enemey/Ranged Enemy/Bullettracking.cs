@@ -2,60 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullettracking : BaseProjectile
+public class Bullettracking : NormalProjechtilies
 {
     GameObject Gametarget;
-   // GameObject Shooter;
-   // int Damage;
+    GameObject Shooter;
+    int Damage;
 
-   // Vector3 Direction;
-
-  //  bool canFire;
+    Vector3 Direction;
+    bool canfire;
 
     void Update()
     {
-        if (Gametarget)
+        if(Gametarget)
         {
-            // Direction = Gametarget.transform.position;
-
-            transform.position = Vector3.MoveTowards(transform.position, Gametarget.transform.position, speed * Time.deltaTime);
+            Direction = Gametarget.transform.position;
         }
-        //else
-        //{
-        //    if (transform.position == Direction)
-        //    {
-        //        Destroy(gameObject);
-        //    }
-        //}
 
-    
+        else
+        {
+            if(transform.position == Direction)
+            {
+                Destroy(gameObject);
+            }
+        }
+        
     }
 
-    //public   void FireProjechtile(GameObject Shoterobjecht, GameObject target, int damage/*, float attackspeed*/)
-    //{
-    //    if (target)
-    //    {
-    //        Gametarget = target;
-    //       // Direction = target.transform.position;
-    //        //Shooter = Shoterobjecht;
-    //        //Damage = damage;
-    //    }
-    //}
-    private void OnCollisionEnter(Collision collision)
+    public void FireProjechtile(GameObject ShotterObjecht, GameObject target, int damage, float attackspeed)
     {
-
-        if (collision.gameObject.GetComponent<BaseProjectile>() ==null)
-            Destroy(gameObject);
-    }
-
-    public override void fireProjechtile(GameObject Shoterobjecht, GameObject target, int damage)
-    {
-        if (target)
+        if(target)
         {
             Gametarget = target;
-            // Direction = target.transform.position;
-            //Shooter = Shoterobjecht;
-            //Damage = damage;
+            Direction = target.transform.position;
+            Shooter = ShotterObjecht;
+            Damage = damage;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.GetComponent<BaseProjectile>() == null)
+        {
+            Destroy(gameObject);
         }
     }
 }
