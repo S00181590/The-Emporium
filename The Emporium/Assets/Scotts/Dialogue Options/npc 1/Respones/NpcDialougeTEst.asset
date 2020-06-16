@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2e1c22f09e2d146bf11e6139e253f8, type: 3}
+  m_Name: NpcDialougeTEst
+  m_EditorClassIdentifier: 
+  dialoguetrees:
+  - dialougueText: hello
+    dialougueDisplayTime: 0
+    DialogueChocies:
+    - dialogueChocie: 
+      nextDialogue: {fileID: 11400000, guid: 666e2d5eb6d4b7d45a256fc6b1c78e1c, type: 2}
+  - dialougueText: nice to meet you
+    dialougueDisplayTime: 0
+    DialogueChocies:
+    - dialogueChocie: 
+      nextDialogue: {fileID: 11400000, guid: 1241d5946f9b6b048a412f3e0e145e1f, type: 2}
+  - dialougueText: goodbye
+    dialougueDisplayTime: 0
+    DialogueChocies:
+    - dialogueChocie: 
+      nextDialogue: {fileID: 11400000, guid: ccd13ca8e453c45418b6c1ca66659294, type: 2}
+    - dialogueChocie: 
+      nextDialogue: {fileID: 11400000, guid: ccd13ca8e453c45418b6c1ca66659294, type: 2}
+    - dialogueChocie: 
+      nextDialogue: {fileID: 11400000, guid: f518d1ecd44531b40adb4b3053d8d877, type: 2}
+  FinishDialouge: {fileID: 0}
