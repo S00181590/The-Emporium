@@ -36,8 +36,13 @@ public class PlayerStats : MonoBehaviour
     //{
     //    collided = false;
     //}
-    
 
+    void setStats()
+    {
+        healthslider.value = GetCurrentStamina();
+        healthslider.value = GetCurrentMana();
+        healthslider.value = GetCurrentHealth();
+    }
     private void Start()
     {
 
@@ -46,9 +51,9 @@ public class PlayerStats : MonoBehaviour
         PlayersMana = MaxMana;
         PlayersHealth = MaxHealth;
 
-        healthslider.value = GetCurrentStamina();
-        healthslider.value = GetCurrentMana();
-        healthslider.value = GetCurrentHealth();
+        //healthslider.value = GetCurrentStamina();
+       // healthslider.value = GetCurrentMana();
+       // healthslider.value = GetCurrentHealth();
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -102,7 +107,17 @@ public class PlayerStats : MonoBehaviour
         //}
     }
 
-   
+    public virtual void CheckStamina()
+    {
+        if (PlayersStamina >= MaxStamina)
+        {
+            PlayersStamina = MaxStamina;
+        }
+        if (PlayersStamina <= 0)
+        {
+            PlayersStamina = 0;
+        }
+    }
     float GetCurrentStamina()
     {
         return PlayersStamina / MaxStamina;
