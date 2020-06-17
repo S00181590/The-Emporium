@@ -25,14 +25,20 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float Gravity;
 
 
-    public float dogdeSpeed = 60;
+    float dogdeSpeed = 60;
+    float movespeed = 5;
+    float walkspeed = 5;
+    float Runningspeed = 10;
+    bool isRunning;
+    PlayerStats PlayerStats;
+    float jumpheight = 5;
     // Start is called before the first frame update
     void Start()
     {
         cutscene = false;
 
         character = GameObject.Find("Character");
-
+        PlayerStats = GetComponent<PlayerStats>();
         controller = GetComponent<CharacterController>();
 
         cam = Camera.main;
@@ -111,6 +117,39 @@ public class PlayerMovement : MonoBehaviour
             if(controller.isGrounded == true)
             {
                 Gravity = 0f;
+                if (Input.GetKey(KeyCode.LeftShift) && z == 1) //can only run forward 
+                {
+                    sprint();
+                    //movementspeed = Runningspeed;
+                    //isRunning = true;
+                }
+                //if (Input.GetKey(KeyCode.LeftShift) && z == 1) //can only run forward 
+                //{
+
+                //    //movementspeed = Runningspeed;
+                //    isRunning = false;
+                //}
+                else
+                {
+                    movementspeed = movespeed;
+                    isRunning = false;
+                }
+                if (PlayerStats.PlayersStamina < PlayerStats.MaxStamina && isRunning == false)
+                {
+
+                    {
+                        PlayerStats.PlayersStamina += 8 * Time.deltaTime;
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.Space) && isRunning == false)
+                {
+
+                    MovDirection.y += jumpheight;
+                    PlayerStats.PlayersStamina -= 5;
+                    PlayerStats.CheckStamina();
+                }
+
+                MovDirection *= movementspeed;
             }
 
             if (Input.GetKeyDown(KeyCode.Q))
@@ -120,6 +159,14 @@ public class PlayerMovement : MonoBehaviour
                 controller.Move(MovDirection);
 
             }
+        }
+
+        void sprint()
+        {
+            movementspeed = Runningspeed;
+            isRunning = true;
+            PlayerStats.PlayersStamina -= 10 * Time.deltaTime;
+            PlayerStats.CheckStamina();
         }
     }
 }
