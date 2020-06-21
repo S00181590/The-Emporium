@@ -18,7 +18,7 @@ public class PlayerStats : MonoBehaviour
     // public float healthslidervalue;
     GameObject objecht;
     private bool collided;
-
+    bool isdead;
     GameObject Gameover;
 
     public decimal money = 0;
@@ -26,7 +26,9 @@ public class PlayerStats : MonoBehaviour
 
     public float CurrenTime;
     public  float StartingTime;
-
+    //spells
+    public GameObject MagicSpellsPrefab;
+    public Transform SpawnSpellLocation;
     [SerializeField] Text AutosaveText;
     //public void OnTriggerEnter(Collider other)
     //{
@@ -74,11 +76,14 @@ public class PlayerStats : MonoBehaviour
         if (PlayersHealth <= 0)
         {
             
-            Destroy(gameObject);
             Time.timeScale = 1f;
             FindObjectOfType<GameOver>().gameoverScreen.SetActive(true);
+            
+            if (isdead == true)
+            {
+                Destroy(gameObject);
+            }
         }
-      
 
         if (PlayersHealth >= MaxHealth)
         {
@@ -116,6 +121,18 @@ public class PlayerStats : MonoBehaviour
         if (PlayersStamina <= 0)
         {
             PlayersStamina = 0;
+        }
+    }
+
+    public virtual void CheckMana()
+    {
+        if (PlayersMana >= MaxMana)
+        {
+            PlayersMana = MaxMana;
+        }
+        if (PlayersMana <= 0)
+        {
+            PlayersMana = 0;
         }
     }
     float GetCurrentStamina()
@@ -184,7 +201,8 @@ public class PlayerStats : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Y))
         {
-            if (PlayersMana > 0) PlayersMana = PlayersMana - 20;
+            //if (PlayersMana > 0) PlayersMana = PlayersMana - 20;
+            MaigSpellAttack();
         }
 
 
@@ -202,19 +220,41 @@ public class PlayerStats : MonoBehaviour
     //    {
     //        //Destroy(gameObject);
     //       FindObjectOfType<GameManager>().GameOver();
-          
-          
+
+
     //    }
 
-            //if (Input.GetKeyDown(KeyCode.R))
-            //{ if (PlayersHealth > 0) PlayersHealth = PlayersHealth - 20; }
+    //if (Input.GetKeyDown(KeyCode.R))
+    //{ if (PlayersHealth > 0) PlayersHealth = PlayersHealth - 20; }
 
 
-            //if (Input.GetKeyDown(KeyCode.T))
-            //{ if (PlayersHealth >= 0) PlayersHealth = PlayersHealth + 20; }
+    //if (Input.GetKeyDown(KeyCode.T))
+    //{ if (PlayersHealth >= 0) PlayersHealth = PlayersHealth + 20; }
     //}
-   
 
+
+    void SelechtTarget()
+    {
+        if (Input.GetKey(KeyCode.Q))
+        {
+            GameObject.FindGameObjectsWithTag("Enemy");
+        }
+    }
+    void MaigSpellAttack()
+    {
+        if (PlayersMana > 0)
+        {
+
+            PlayersMana -= 10;
+            CheckMana();
+            Vector3 SpawnSpellLocation = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+
+
+            GameObject clones;
+            clones = Instantiate(MagicSpellsPrefab, SpawnSpellLocation, Quaternion.identity);
+            clones.transform.GetComponent<fireSpell>();//NEED TO ADD LOCK ON LATER 
+        }
+    }
 
 }
 
