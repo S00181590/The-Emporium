@@ -38,18 +38,19 @@ public class PResourceManager : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
-                
-                bool waspickedup = BackupInventory.instance.AddItem(nearest.GetComponent<Resource>().Info);
-
-                if(waspickedup)
+                if(nearest.GetComponent<Resource>().enabled == true)
                 {
-                    NearResources.Remove(nearest);
-                    Destroy(nearest);
+                    bool waspickedup = BackupInventory.instance.AddItem(nearest.GetComponent<Resource>().Info);
 
-                    NearResources = new List<GameObject>();
-                    
+                    if (waspickedup)
+                    {
+                        NearResources.Remove(nearest);
+                        Destroy(nearest);
+
+                        NearResources = new List<GameObject>();
+
+                    }
                 }
-               
 
             }
         }
@@ -92,16 +93,33 @@ public class PResourceManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Resource")
-        {
-            NearResources.Add(other.gameObject);
 
-            nearest = approximate(NearResources);
-        }
-        else if(other.gameObject.tag == "CraftTable")
+        //if (other.gameObject.tag == "Resource")
+        //{
+        //    NearResources.Add(other.gameObject);
+
+        //    nearest = approximate(NearResources);
+        //}
+        //else if(other.gameObject.tag == "CraftTable")
+        //{
+        //    other.GetComponent<CraftingTable>().inrange = true;
+        //}
+
+        //switch more efficient than multiple else ifs
+        switch(other.gameObject.tag)
         {
-            other.GetComponent<CraftingTable>().inrange = true;
+            case "Resource":
+                NearResources.Add(other.gameObject);
+                nearest = approximate(NearResources);
+                break;
+            case "CraftTable":
+                other.GetComponent<CraftingTable>().inrange = true;
+                break;
+            case "Shelf":
+                other.gameObject.GetComponent<ShelfHolder>().opened = true;
+                break;
         }
+        
     }
 
     private void OnTriggerExit(Collider other)

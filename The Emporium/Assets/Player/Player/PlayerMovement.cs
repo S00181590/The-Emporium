@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
 
     GameObject character;
 
+    public Animator femModel;
+
     private Vector3 desireDirection;
 
     Camera cam;
@@ -59,7 +61,14 @@ public class PlayerMovement : MonoBehaviour
             Cursor.visible = true;
         }
 
-
+        if(x > 0 || z > 0)
+        {
+            femModel.SetBool("IsWalking", true);
+        }
+        else
+        {
+            femModel.SetBool("IsWalking", false);
+        }
 
         if (!cutscene)
         {
@@ -114,13 +123,20 @@ public class PlayerMovement : MonoBehaviour
             MovDirection = new Vector3(MovDirection.x, Gravity, MovDirection.z);
             controller.Move(MovDirection);
 
-            if(controller.isGrounded == true)
+            
+
+            if (controller.isGrounded == true)
             {
                 Gravity = 0f;
                 if (Input.GetKey(KeyCode.LeftShift) && z == 1) //can only run forward 
                 {
+
+
                     sprint();
                     //movementspeed = Runningspeed;
+
+                    femModel.SetBool("IsRunning", isRunning);
+                    femModel.SetBool("IsWalking", !isRunning);
                     //isRunning = true;
                 }
                 //if (Input.GetKey(KeyCode.LeftShift) && z == 1) //can only run forward 
@@ -133,6 +149,9 @@ public class PlayerMovement : MonoBehaviour
                 {
                     movementspeed = movespeed;
                     isRunning = false;
+
+                    femModel.SetBool("IsRunning", isRunning);
+                    femModel.SetBool("IsWalking", !isRunning);
                 }
                 if (PlayerStats.PlayersStamina < PlayerStats.MaxStamina && isRunning == false)
                 {
