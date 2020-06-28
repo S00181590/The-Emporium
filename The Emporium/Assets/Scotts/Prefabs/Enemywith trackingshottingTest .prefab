@@ -110,9 +110,9 @@ GameObject:
   - component: {fileID: 8471918533275750708}
   - component: {fileID: 8471918533275750699}
   - component: {fileID: 8471918533275750698}
-  - component: {fileID: 8471918533275750697}
   - component: {fileID: 8471918533275750696}
   - component: {fileID: 8471918533275750702}
+  - component: {fileID: 2261658410190646743}
   m_Layer: 0
   m_Name: 'Enemywith trackingshottingTest '
   m_TagString: Enemy
@@ -279,21 +279,6 @@ MonoBehaviour:
   MaxHealth: 100
   healthBarUI: {fileID: 3991942180509213849}
   healthslider: {fileID: 3991942180893767795}
---- !u!114 &8471918533275750697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8471918533275750701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cf518ed33a5b554db85e421bfde0081, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trackingSpeed: 50
-  TargetSelcted: {fileID: 6404660610701988835, guid: 5a72305ac380f674890676cc1e49b4db,
-    type: 3}
 --- !u!114 &8471918533275750696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,14 +291,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f50f39098aa0dd40bfaa98008ee2b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackrate: 1
+  AttackRate: 0
   beam: 0
-  canAttack: 0
-  projechtile: {fileID: 4478855713276115486, guid: 05cf2af5b3e3f3640b1f68bd7e72f218,
-    type: 3}
-  fielOfView: 380
+  AbletoAttack: 0
+  Projechtile: {fileID: 0}
+  FieldOfView: 0
   Target: {fileID: 6404660610701988835, guid: 5a72305ac380f674890676cc1e49b4db, type: 3}
-  damage: 10
+  DamageAmount: 0
   ProjechtileSpawner:
   - {fileID: 8471918534607875688}
 --- !u!135 &8471918533275750702
@@ -329,6 +313,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 8.986812
   m_Center: {x: 3.0483828, y: 0.65929985, z: -1.6777687}
+--- !u!114 &2261658410190646743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8471918533275750701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c60be37d30b339469ecefd6f4d6ff73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
 --- !u!1 &8471918533340024449
 GameObject:
   m_ObjectHideFlags: 0

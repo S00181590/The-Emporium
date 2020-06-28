@@ -8,6 +8,10 @@ TagManager:
   - Resource
   - CraftTable
   - Door
+  - fence
+  - Enemy
+  - PlayersArrow
+  - wall
   layers:
   - Default
   - TransparentFX

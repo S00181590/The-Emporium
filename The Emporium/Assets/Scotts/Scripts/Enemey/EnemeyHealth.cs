@@ -59,5 +59,9 @@ public class EnemeyHealth : MonoBehaviour
         {
             health -= 10;
         }
+        if (other.tag.Equals("FireBall"))
+        {
+            health -= 20;
+        }
     }
 }
