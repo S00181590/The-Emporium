@@ -8,10 +8,13 @@ TagManager:
   - Resource
   - CraftTable
   - Door
-  - PlayersArrow
   - Shelf
   - ShelfUi
   - ShelfUI
+  - fence
+  - Enemy
+  - PlayersArrow
+  - wall
   layers:
   - Default
   - TransparentFX

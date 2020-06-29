@@ -37,6 +37,7 @@ public class Arrow : MonoBehaviour
         {
             HasHitTarget = true;
             ÀrrowStickOnhit();
+            transform.SetParent(collision.transform);//allows the arrow to stick to objecht if it moves
         }
 
         if (collision.collider.tag != "Enemy")

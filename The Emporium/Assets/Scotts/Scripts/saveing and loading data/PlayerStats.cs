@@ -29,6 +29,8 @@ public class PlayerStats : MonoBehaviour
     //spells
     public GameObject MagicSpellsPrefab;
     public Transform SpawnSpellLocation;
+
+    LockOnController lockOnController;
     [SerializeField] Text AutosaveText;
     //public void OnTriggerEnter(Collider other)
     //{
@@ -47,7 +49,7 @@ public class PlayerStats : MonoBehaviour
     }
     private void Start()
     {
-
+        lockOnController = GetComponent<LockOnController>();
         CurrenTime = StartingTime;
         PlayersStamina = MaxStamina;
         PlayersMana = MaxMana;
@@ -242,17 +244,17 @@ public class PlayerStats : MonoBehaviour
     }
     void MaigSpellAttack()
     {
-        if (PlayersMana > 0)
+        
+        if (PlayersMana >0 )
         {
 
             PlayersMana -= 10;
             CheckMana();
-            Vector3 SpawnSpellLocation = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
-
-
-            GameObject clones;
-            clones = Instantiate(MagicSpellsPrefab, SpawnSpellLocation, Quaternion.identity);
-            clones.transform.GetComponent<fireSpell>();//NEED TO ADD LOCK ON LATER 
+            //Vector3 SpawnSpellLocation = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+            
+            //GameObject clones;
+            //clones = Instantiate(MagicSpellsPrefab, SpawnSpellLocation, Quaternion.identity);
+            //clones.transform.GetComponent<fireSpell>().Target.isLocjedOn;//NEED TO ADD LOCK ON LATER 
         }
     }
 
