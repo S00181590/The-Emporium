@@ -118,21 +118,32 @@ public class PResourceManager : MonoBehaviour
             case "Shelf":
                 other.gameObject.GetComponent<ShelfHolder>().opened = true;
                 break;
+            case "Door":
+                other.gameObject.GetComponent<Animator>().SetBool("IsNear", true);
+                break;
         }
         
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Resource")
-        {
-            NearResources.Remove(other.gameObject);
 
-            other.gameObject.GetComponent<Resource>().selectable = false;
-        }
-        else if (other.gameObject.tag == "CraftTable")
+        //switch more efficient than multiple else ifs
+        switch (other.gameObject.tag)
         {
-            other.GetComponent<CraftingTable>().inrange = false;
+            case "Resource":
+                NearResources.Remove(other.gameObject);
+                other.gameObject.GetComponent<Resource>().selectable = false;
+                break;
+            case "CraftTable":
+                other.GetComponent<CraftingTable>().inrange = false;
+                break;
+            case "Shelf":
+                //other.gameObject.GetComponent<ShelfHolder>().opened = false;
+                break;
+            case "Door":
+                other.gameObject.GetComponent<Animator>().SetBool("IsNear", false);
+                break;
         }
     }
 }
