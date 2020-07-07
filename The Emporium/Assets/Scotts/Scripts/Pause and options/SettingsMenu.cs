@@ -14,11 +14,12 @@ public class SettingsMenu : MonoBehaviour
     public Dropdown TextureDetailsSettings;
    // public Dropdown DayTimeCycle;
     public Slider MusicVolumeSlider;
+
     public Resolution[] resolutions;//storeing al resolutions to be retunred
     public Button buttonApply;
     public AudioSource MusicSources;
-    public Slider BrightnessSlider;
-    void OnEnable()
+
+     void OnEnable()
     {
         gameOptions = new GameOptions();
 
@@ -27,10 +28,7 @@ public class SettingsMenu : MonoBehaviour
         TextureDetailsSettings.onValueChanged.AddListener(delegate { setTextureQuailty(); });
         MusicVolumeSlider.onValueChanged.AddListener(delegate { SettingtheVolume(); });
         buttonApply.onClick.AddListener(delegate { OnButtonApplyClick(); });
-        // VSyncEnabled.onValueChanged.AddListener(delegate { EnableVSync(); });
-
-        BrightnessSlider.onValueChanged.AddListener(delegate { setBrightnessslider(); });
-
+       // VSyncEnabled.onValueChanged.AddListener(delegate { EnableVSync(); });
 
         ResoulionDropDownSettings.ClearOptions();
         List<string> resoultionOptions = new List<string>();
@@ -42,7 +40,7 @@ public class SettingsMenu : MonoBehaviour
         }
         LoadSettings();
     }
-    
+
     public void setResolution()
     {
         Screen.SetResolution(resolutions[ResoulionDropDownSettings.value].width, resolutions[ResoulionDropDownSettings.value].height, Screen.fullScreen);
@@ -53,17 +51,7 @@ public class SettingsMenu : MonoBehaviour
     {
         QualitySettings.masterTextureLimit = TextureDetailsSettings.value;
     }
-    public void setBrightnessslider()
-    {
-       BrightnessSlider.value = gameOptions.Brightness = BrightnessSlider.value;
-       // gameOptions.Brightness = BrightnessSlider( gameOptions.Brightness, 0f, 1.0f);
-        //RenderSettings.ambientLight = new Color(gameOptions.Brightness, gameOptions.Brightness, gameOptions.Brightness, 1);
-    }
-    void OnGui()
-    {
-        //gameOptions.Brightness =  BrightnessSlider (gameOptions.Brightness, 0f, 1.0f);
-        RenderSettings.ambientLight = new Color(gameOptions.Brightness, gameOptions.Brightness, gameOptions.Brightness, 1);
-    }
+
     public void SettingtheVolume()
     {
         MusicSources.volume = gameOptions.MusicVolume = MusicVolumeSlider.value;
@@ -82,7 +70,7 @@ public class SettingsMenu : MonoBehaviour
     public void SaveSettings()
     {
         string jsonData = JsonUtility.ToJson(gameOptions, true);
-        File.WriteAllText(Application.persistentDataPath + "/gamesettings.json", jsonData);
+        File.WriteAllText(Application.persistentDataPath + "gamesttings.json", jsonData);
     }
     public void OnButtonApplyClick()
     {
@@ -97,7 +85,7 @@ public class SettingsMenu : MonoBehaviour
         fullScreenToggle.isOn = gameOptions.FullScreen;
         Screen.fullScreen = gameOptions.FullScreen;
         ResoulionDropDownSettings.RefreshShownValue();
-        BrightnessSlider.value = gameOptions.Brightness;
+
         ////might have to change 
         //VSyncEnabled.isOn = gameOptions.VSync;
         //VSyncEnabled.enabled = gameOptions.VSync;

@@ -32,8 +32,6 @@ public class PlayerStats : MonoBehaviour
 
     LockOnController lockOnController;
     [SerializeField] Text AutosaveText;
-
-    public ParticleSystem playerDeathFx;
     //public void OnTriggerEnter(Collider other)
     //{
     //    collided = true;
@@ -61,11 +59,20 @@ public class PlayerStats : MonoBehaviour
        // healthslider.value = GetCurrentMana();
        // healthslider.value = GetCurrentHealth();
     }
-  
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag.Equals("EnemyArrow"))
+        {
+            PlayersHealth -= 10;
+            
+        }
+    }
     private void Update()
     {
-        StaminaSlider.value = GetCurrentStamina();    
+        StaminaSlider.value = GetCurrentStamina();
+        UseStaminaTest();
         ManaSlider.value = GetCurrentMana();
+        UseManaTest();
         healthslider.value = GetCurrentHealth();
      
         if (PlayersHealth <= 0)
@@ -76,7 +83,6 @@ public class PlayerStats : MonoBehaviour
             
             if (isdead == true)
             {
-                Instantiate(playerDeathFx, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
         }
@@ -179,12 +185,54 @@ public class PlayerStats : MonoBehaviour
         transform.position = position;
     }
 
-   
+    void UseStaminaTest()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            if (PlayersStamina > 0) PlayersStamina = PlayersStamina - 20;
+        }
 
-   
-   
 
-    
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (PlayersStamina >= 0) PlayersStamina = PlayersStamina + 20;
+        }
+
+    }
+    void UseManaTest()
+    {
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            //if (PlayersMana > 0) PlayersMana = PlayersMana - 20;
+            MaigSpellAttack();
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            if (PlayersMana >= 0) PlayersMana = PlayersMana + 20;
+        }
+
+    }
+    //void takedamage(float amount)
+    //{
+
+    //    PlayersHealth -= amount;
+    //    if(PlayersHealth <=0)
+    //    {
+    //        //Destroy(gameObject);
+    //       FindObjectOfType<GameManager>().GameOver();
+
+
+    //    }
+
+    //if (Input.GetKeyDown(KeyCode.R))
+    //{ if (PlayersHealth > 0) PlayersHealth = PlayersHealth - 20; }
+
+
+    //if (Input.GetKeyDown(KeyCode.T))
+    //{ if (PlayersHealth >= 0) PlayersHealth = PlayersHealth + 20; }
+    //}
 
 
     void SelechtTarget()
@@ -194,21 +242,21 @@ public class PlayerStats : MonoBehaviour
             GameObject.FindGameObjectsWithTag("Enemy");
         }
     }
-    //void MaigSpellAttack()
-    //{
+    void MaigSpellAttack()
+    {
         
-    //    if (PlayersMana >0 )
-    //    {
+        if (PlayersMana >0 )
+        {
 
-    //        PlayersMana -= 10;
-    //        CheckMana();
-    //        //Vector3 SpawnSpellLocation = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+            PlayersMana -= 10;
+            CheckMana();
+            //Vector3 SpawnSpellLocation = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
             
-    //        //GameObject clones;
-    //        //clones = Instantiate(MagicSpellsPrefab, SpawnSpellLocation, Quaternion.identity);
-    //        //clones.transform.GetComponent<fireSpell>().Target.isLocjedOn;//NEED TO ADD LOCK ON LATER 
-    //    }
-    //}
+            //GameObject clones;
+            //clones = Instantiate(MagicSpellsPrefab, SpawnSpellLocation, Quaternion.identity);
+            //clones.transform.GetComponent<fireSpell>().Target.isLocjedOn;//NEED TO ADD LOCK ON LATER 
+        }
+    }
 
 }
 

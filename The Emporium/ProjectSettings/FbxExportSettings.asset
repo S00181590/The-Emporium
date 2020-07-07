@@ -12,6 +12,7 @@
         "integrationSavePath": "C:\\Users\\Jordan\\Documents\\CollegeWork\\WorkExperience\\Github\\The-Emporium\\The Emporium",
         "selectedDCCApp": 0,
         "prefabSavePaths": [
+            "Shop/LinkedBuilding",
             "."
         ],
         "fbxSavePaths": [
@@ -31,9 +32,9 @@
             "exportUnrendered": true
         },
         "convertToPrefabSettingsSerialize": {
-            "exportFormat": 0,
+            "exportFormat": 1,
             "animatedSkinnedMesh": false,
-            "mayaCompatibleNaming": true
+            "mayaCompatibleNaming": false
         }
     }
 }
