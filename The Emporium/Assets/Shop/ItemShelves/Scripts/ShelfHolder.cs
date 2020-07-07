@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ShelfHolder : MonoBehaviour
 {
-    private Item holding;
+    public Item holding;
 
     public bool opened;
 
@@ -60,6 +60,16 @@ public class ShelfHolder : MonoBehaviour
         holding = item;
 
         currentholding = Instantiate(item.physical, DisplayPoint.gameObject.transform, false);
+
+        Rigidbody R;
+
+        bool hasPhysics = currentholding.TryGetComponent<Rigidbody>(out R);
+
+        if (hasPhysics)
+        {
+            R.constraints = RigidbodyConstraints.FreezeAll;
+        }
+        //currentholding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
         currentholding.transform.localPosition = Vector3.zero;
 

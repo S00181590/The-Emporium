@@ -15,6 +15,7 @@ MonoBehaviour:
   id: 1
   title: Jute
   descrption: A long flexible plant
+  Value: 1
   physical: {fileID: 8131055701968966518, guid: 817760021a4f3534b91aed659910669c,
     type: 3}
   icon: {fileID: 21300000, guid: c586779edf197f646b469e341930b8a6, type: 3}

@@ -62,16 +62,20 @@ public class PResourceManager : MonoBehaviour
 
         GameObject nearest = null;
 
-        foreach(GameObject g in near)
+        if (near != null)
         {
 
-            if (Vector3.Distance(gameObject.transform.position, g.transform.position) < distance)
+            foreach (GameObject g in near)
             {
-                nearest = g;
 
-                distance = Vector3.Distance(gameObject.transform.position, g.transform.position);
+                if (Vector3.Distance(gameObject.transform.position, g.transform.position) < distance)
+                {
+                    nearest = g;
+
+                    distance = Vector3.Distance(gameObject.transform.position, g.transform.position);
+                }
+
             }
-            
         }
 
         if(nearest != null)
@@ -94,17 +98,6 @@ public class PResourceManager : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        //if (other.gameObject.tag == "Resource")
-        //{
-        //    NearResources.Add(other.gameObject);
-
-        //    nearest = approximate(NearResources);
-        //}
-        //else if(other.gameObject.tag == "CraftTable")
-        //{
-        //    other.GetComponent<CraftingTable>().inrange = true;
-        //}
-
         //switch more efficient than multiple else ifs
         switch(other.gameObject.tag)
         {
@@ -120,6 +113,10 @@ public class PResourceManager : MonoBehaviour
                 break;
             case "Door":
                 other.gameObject.GetComponent<Animator>().SetBool("IsNear", true);
+                break;
+            case "Till":
+                other.GetComponent<TillControl>().SwitchCam();
+                gameObject.GetComponent<PlayerMovement>().cutscene = true;
                 break;
         }
         
@@ -139,7 +136,7 @@ public class PResourceManager : MonoBehaviour
                 other.GetComponent<CraftingTable>().inrange = false;
                 break;
             case "Shelf":
-                //other.gameObject.GetComponent<ShelfHolder>().opened = false;
+                other.gameObject.GetComponent<ShelfHolder>().opened = false;
                 break;
             case "Door":
                 other.gameObject.GetComponent<Animator>().SetBool("IsNear", false);

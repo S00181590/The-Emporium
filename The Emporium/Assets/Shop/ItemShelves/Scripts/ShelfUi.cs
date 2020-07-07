@@ -83,6 +83,8 @@ public class ShelfUi : MonoBehaviour
 
         Destroy(shelf.GetComponent<ShelfHolder>().currentholding);
 
+        shelf.GetComponent<ShelfHolder>().clearItem();
+
         itemObject = null;
         itemImage.sprite = null;
         itemName.text = "Empty";

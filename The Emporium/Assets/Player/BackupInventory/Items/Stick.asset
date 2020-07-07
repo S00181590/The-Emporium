@@ -15,6 +15,7 @@ MonoBehaviour:
   id: 2
   title: Stick
   descrption: Bruh... Really? It... it's a stick...
+  Value: 1
   physical: {fileID: 7838548151301492588, guid: 4788e5ce3c8aacb4ea003131b718f113,
     type: 3}
   icon: {fileID: 21300000, guid: ff5996f586a53be40891cac486a4ff12, type: 3}

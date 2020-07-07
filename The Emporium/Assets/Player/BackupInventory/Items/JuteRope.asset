@@ -15,6 +15,7 @@ MonoBehaviour:
   id: 3
   title: Jute Rope
   descrption: A sturdy fibre rope made from jute
+  Value: 5
   physical: {fileID: 7508582927028748221, guid: d003d776104d3eb4c81450ec4640e510,
     type: 3}
   icon: {fileID: 21300000, guid: 8173b63d61cff78478f77f4e4391e95f, type: 3}

@@ -15,6 +15,7 @@ MonoBehaviour:
   id: 0
   title: Rock
   descrption: It.. It's a rock...
+  Value: 1
   physical: {fileID: 7096058972597543470, guid: a0dda0c5c1b5f5a40aed68bd5dd1def5,
     type: 3}
   icon: {fileID: 21300000, guid: 231ab2345b42cb44a8ac933dff06bacb, type: 3}

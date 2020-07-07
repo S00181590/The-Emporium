@@ -15,6 +15,11 @@ TagManager:
   - Enemy
   - PlayersArrow
   - wall
+  - ShelfSpot
+  - Portal
+  - TillSpot
+  - Till
+  - Customer
   layers:
   - Default
   - TransparentFX
