@@ -118,7 +118,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6663780835877172850}
+      - m_Target: {fileID: 0}
         m_MethodName: FadeIn
         m_Mode: 1
         m_Arguments:
@@ -292,8 +292,8 @@ GameObject:
   - component: {fileID: 7577092704817788860}
   - component: {fileID: 8617283602412088892}
   - component: {fileID: 3817402831509661943}
-  - component: {fileID: 6663780835877172850}
   - component: {fileID: 5268560475692841456}
+  - component: {fileID: 9212633814046286934}
   m_Layer: 5
   m_Name: AutoSave
   m_TagString: Untagged
@@ -381,19 +381,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6663780835877172850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4948057761686567813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97dce3c2d47f99647a9f63ab9c403c43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UiTextElmnt: {fileID: 5268560475692841456}
 --- !u!225 &5268560475692841456
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -406,3 +393,15 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &9212633814046286934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4948057761686567813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f259bf0b9be1e2645a8a1b16fa5e08f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     bool running = false;
-
+    FireBallTake2 fireBallTake;
     public bool cutscene;
 
     private CharacterController controller;
@@ -34,11 +34,12 @@ public class PlayerMovement : MonoBehaviour
     bool isRunning;
     PlayerStats PlayerStats;
     float jumpheight = 5;
+    bool isGrounded;
     // Start is called before the first frame update
     void Start()
     {
         cutscene = false;
-
+        fireBallTake = GetComponent<FireBallTake2>();
         character = GameObject.Find("Character");
         PlayerStats = GetComponent<PlayerStats>();
         controller = GetComponent<CharacterController>();

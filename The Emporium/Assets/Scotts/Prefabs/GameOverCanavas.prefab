@@ -763,8 +763,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadPlayer
+      - m_Target: {fileID: 8718796672699437763}
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -787,6 +787,7 @@ GameObject:
   - component: {fileID: 3719234411781948396}
   - component: {fileID: 4554629187844070312}
   - component: {fileID: 3168015254597528214}
+  - component: {fileID: 4280564396097686429}
   m_Layer: 0
   m_Name: GameOverCanavas
   m_TagString: Untagged
@@ -886,3 +887,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ca1e0074be5364e9ff7fc19577903c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4280564396097686429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8718796672699437763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d80091d8be62844a32ee1871ec88dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameoverScreen: {fileID: 8718796672699437763}

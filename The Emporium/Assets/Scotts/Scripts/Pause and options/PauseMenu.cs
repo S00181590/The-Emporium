@@ -21,20 +21,21 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         IsPaused = false;
         OptionsOpen = false;
         SaveMenuOpen = false;
         LoadMenuOpen = false;
     }
     // Update is called once per frame
-   public  void Update()
+    public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             IsPaused = !IsPaused;
-        }
 
-        if(IsPaused)
+        }
+        if (IsPaused)
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
@@ -51,7 +52,7 @@ public class PauseMenu : MonoBehaviour
             Options.SetActive(true);
             Time.timeScale = 0f;
         }
-        else if(!OptionsOpen)
+        else if (!OptionsOpen)
         {
             Options.SetActive(false);
             Time.timeScale = 1f;
@@ -78,15 +79,7 @@ public class PauseMenu : MonoBehaviour
         //}
     }
 
-    public void ResumeTheGame()
-    {
-        IsPaused = !IsPaused;
-        if(!IsPaused)
-        {
-            pauseMenu.SetActive(false);
-            Time.timeScale = 1f;
-        }
-    }
+
 
     public void Optionsmenu()
     {
@@ -114,14 +107,22 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1f;
     }
-
+    public void ResumeTheGame()
+    {
+        IsPaused = !IsPaused;
+        if (!IsPaused)
+        {
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1f;
+        }
+    }
     public void SaveSettings()
     {
         OptionsOpen = !OptionsOpen;
-            if(!OptionsOpen)
-            {
-              Options.SetActive(false);
-              Time.timeScale = 1f;
-            }
+        if (!OptionsOpen)
+        {
+            Options.SetActive(false);
+            Time.timeScale = 1f;
+        }
     }
 }
