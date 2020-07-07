@@ -11,6 +11,7 @@ public class GameOver : MonoBehaviour
     void Start()
     {
         gameoverScreen = GameObject.Find("GameOverCanavas");
+        gameoverScreen.SetActive(true);
     }
 
     public void update()

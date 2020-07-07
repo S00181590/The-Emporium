@@ -4,74 +4,84 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public float AttackRate;
-    public bool beam, AbletoAttack = false;
-    public GameObject Projechtile;
-    public float FieldOfView;
+    public float attackrate;
+    public bool beam, canAttack = false;
+    public GameObject projechtile;
+    public float fielOfView;
     public GameObject Target;
-    public int DamageAmount;
+    public int damage;
     public List<GameObject> ProjechtileSpawner;
 
-    List<GameObject> EnemyLastAttack = new List<GameObject>();
+    List<GameObject> lastProjechtiles = new List<GameObject>();
 
-    float FireRateTimer = 0.0f;
+    float fireTimer = 0.0f;
 
     private void Start()
     {
         Target = GameObject.Find("Character");
     }
+    // Update is called once per frame
     void Update()
     {
-        if (AbletoAttack)
-            if(!Target)
-            {
-                if (beam)
-                    RemoveEnemeyfinalProjectiles();
-                return;
-            }
-
-
-        if(beam && EnemyLastAttack.Count <=0)
+        if (canAttack)
         {
-            float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(Target.transform.position - transform.position));
-            if(angle < FieldOfView)
-            {
-                SpawnEnemeyProjectiles();
-            }
-            if (angle > FieldOfView)
-            {
-                RemoveEnemeyfinalProjectiles();
-            }
-        }
+            //if (!Target)
+            //{
+            //    if (beam)
+            //        removeLastProjetiles();
+            //    return;
 
-        else if (beam && EnemyLastAttack.Count >0)
-        {
-            float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(Target.transform.position - transform.position));
-            if(angle > FieldOfView)
-            {
-                while(EnemyLastAttack.Count >0)
-                {
-                    Destroy(EnemyLastAttack[0]); EnemyLastAttack.RemoveAt(0);
-                }
-            }
+            //}
 
-            if (angle < FieldOfView)
-            {
-                SpawnEnemeyProjectiles();
-                FireRateTimer = 0.0f;
-            }
-        }
-
-        else
-        {
-            FireRateTimer += Time.deltaTime;
-            if(FireRateTimer >= AttackRate)
+            if (beam && lastProjechtiles.Count <= 0)
             {
                 float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(Target.transform.position - transform.position));
-                if(angle <FieldOfView)
+                if (angle < fielOfView)
                 {
-                    SpawnEnemeyProjectiles();
-                    FireRateTimer = 0.0f;
+                    SpawnProjectiles();
+                }
+
+                //if (angle > fielOfView)
+                //{
+                //    removeLastProjetiles();
+                //}
+            }
+            else if (beam && lastProjechtiles.Count > 0)
+            {
+                float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(Target.transform.position - transform.position));
+
+                if (angle > fielOfView)
+                {
+                    while (lastProjechtiles.Count > 0)
+                    {
+                        Destroy(lastProjechtiles[0]); lastProjechtiles.RemoveAt(0);
+                    }
+                }
+
+
+                //if (angle < fielOfView)
+                //{
+
+                //    SpawnProjectiles();
+                //    fireTimer = 0.0f;
+
+                //}
+            }
+            else
+            {
+                fireTimer += Time.deltaTime;
+
+                if (fireTimer >= attackrate)
+                {
+
+                    float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(Target.transform.position - transform.position));
+
+                    if (angle < fielOfView)
+                    {
+                        SpawnProjectiles();
+
+                        fireTimer = 0.0f;
+                    }
                 }
             }
         }
@@ -79,54 +89,49 @@ public class Shooting : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag =="Player")
-        {
-            AbletoAttack = true;
-        }
+        if (other.tag == "Player")
+            canAttack = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag =="Player")
-        {
-            AbletoAttack = false;
-        }
+        if (other.tag == "Player")
+            canAttack = false;
     }
 
-    void SpawnEnemeyProjectiles()
+    void SpawnProjectiles()
     {
-        if (!Projechtile)
+        if (!projechtile)
         {
             return;
         }
 
-        EnemyLastAttack.Clear();
+        lastProjechtiles.Clear();
 
         for (int i = 0; i < ProjechtileSpawner.Count; i++)
         {
             if (ProjechtileSpawner[i])
             {
-                GameObject projectile = Instantiate(Projechtile, ProjechtileSpawner[i].transform.position,
-                   Quaternion.Euler(ProjechtileSpawner[i].transform.forward)) as GameObject;
-                projectile.GetComponent<BaseProjectile>().FireProjectileNow(ProjechtileSpawner[i], Target, DamageAmount, AttackRate);
+                GameObject proj = Instantiate(projechtile, ProjechtileSpawner[i].transform.position,
+                    Quaternion.Euler(ProjechtileSpawner[i].transform.forward)) as GameObject;
+                proj.GetComponent<BaseProjectile>().fireProjechtile(ProjechtileSpawner[i], Target, damage);
 
-                EnemyLastAttack.Add(projectile);
+                lastProjechtiles.Add(proj);
             }
         }
     }
-    public void SetTheTarget(GameObject target)
-    {
-        Target = target;
-    }
 
-    void RemoveEnemeyfinalProjectiles()
+    //public void SetTheTarget(GameObject target)
+    //{
+    //    Target = target;
+    //}
+    void removeLastProjetiles()
     {
-        while (EnemyLastAttack.Count >0)
+        while (lastProjechtiles.Count > 0)
         {
-            Destroy(EnemyLastAttack[0]);
-            EnemyLastAttack.RemoveAt(0);
+            Destroy(lastProjechtiles[0]);
+            lastProjechtiles.RemoveAt(0);
         }
     }
-
-  
 }
+

@@ -38,19 +38,18 @@ public class PResourceManager : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
-                if(nearest.GetComponent<Resource>().enabled == true)
+                
+                bool waspickedup = BackupInventory.instance.AddItem(nearest.GetComponent<Resource>().Info);
+
+                if(waspickedup)
                 {
-                    bool waspickedup = BackupInventory.instance.AddItem(nearest.GetComponent<Resource>().Info);
+                    NearResources.Remove(nearest);
+                    Destroy(nearest);
 
-                    if (waspickedup)
-                    {
-                        NearResources.Remove(nearest);
-                        Destroy(nearest);
-
-                        NearResources = new List<GameObject>();
-
-                    }
+                    NearResources = new List<GameObject>();
+                    
                 }
+               
 
             }
         }
@@ -93,57 +92,29 @@ public class PResourceManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-        //if (other.gameObject.tag == "Resource")
-        //{
-        //    NearResources.Add(other.gameObject);
-
-        //    nearest = approximate(NearResources);
-        //}
-        //else if(other.gameObject.tag == "CraftTable")
-        //{
-        //    other.GetComponent<CraftingTable>().inrange = true;
-        //}
-
-        //switch more efficient than multiple else ifs
-        switch(other.gameObject.tag)
+        if (other.gameObject.tag == "Resource")
         {
-            case "Resource":
-                NearResources.Add(other.gameObject);
-                nearest = approximate(NearResources);
-                break;
-            case "CraftTable":
-                other.GetComponent<CraftingTable>().inrange = true;
-                break;
-            case "Shelf":
-                other.gameObject.GetComponent<ShelfHolder>().opened = true;
-                break;
-            case "Door":
-                other.gameObject.GetComponent<Animator>().SetBool("IsNear", true);
-                break;
+            NearResources.Add(other.gameObject);
+
+            nearest = approximate(NearResources);
         }
-        
+        else if(other.gameObject.tag == "CraftTable")
+        {
+            other.GetComponent<CraftingTable>().inrange = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-
-        //switch more efficient than multiple else ifs
-        switch (other.gameObject.tag)
+        if (other.gameObject.tag == "Resource")
         {
-            case "Resource":
-                NearResources.Remove(other.gameObject);
-                other.gameObject.GetComponent<Resource>().selectable = false;
-                break;
-            case "CraftTable":
-                other.GetComponent<CraftingTable>().inrange = false;
-                break;
-            case "Shelf":
-                //other.gameObject.GetComponent<ShelfHolder>().opened = false;
-                break;
-            case "Door":
-                other.gameObject.GetComponent<Animator>().SetBool("IsNear", false);
-                break;
+            NearResources.Remove(other.gameObject);
+
+            other.gameObject.GetComponent<Resource>().selectable = false;
+        }
+        else if (other.gameObject.tag == "CraftTable")
+        {
+            other.GetComponent<CraftingTable>().inrange = false;
         }
     }
 }
