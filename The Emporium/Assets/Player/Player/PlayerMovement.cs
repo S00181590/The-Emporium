@@ -6,14 +6,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     bool running = false;
-
+    FireBallTake2 fireBallTake;
     public bool cutscene;
 
     private CharacterController controller;
 
     GameObject character;
-
-    public Animator femModel;
 
     private Vector3 desireDirection;
 
@@ -34,11 +32,12 @@ public class PlayerMovement : MonoBehaviour
     bool isRunning;
     PlayerStats PlayerStats;
     float jumpheight = 5;
+    bool isGrounded;
     // Start is called before the first frame update
     void Start()
     {
         cutscene = false;
-
+        fireBallTake = GetComponent<FireBallTake2>();
         character = GameObject.Find("Character");
         PlayerStats = GetComponent<PlayerStats>();
         controller = GetComponent<CharacterController>();
@@ -61,14 +60,7 @@ public class PlayerMovement : MonoBehaviour
             Cursor.visible = true;
         }
 
-        if(x > 0 || z > 0)
-        {
-            femModel.SetBool("IsWalking", true);
-        }
-        else
-        {
-            femModel.SetBool("IsWalking", false);
-        }
+
 
         if (!cutscene)
         {
@@ -123,20 +115,13 @@ public class PlayerMovement : MonoBehaviour
             MovDirection = new Vector3(MovDirection.x, Gravity, MovDirection.z);
             controller.Move(MovDirection);
 
-            
-
-            if (controller.isGrounded == true)
+            if(controller.isGrounded == true)
             {
                 Gravity = 0f;
                 if (Input.GetKey(KeyCode.LeftShift) && z == 1) //can only run forward 
                 {
-
-
                     sprint();
                     //movementspeed = Runningspeed;
-
-                    femModel.SetBool("IsRunning", isRunning);
-                    femModel.SetBool("IsWalking", !isRunning);
                     //isRunning = true;
                 }
                 //if (Input.GetKey(KeyCode.LeftShift) && z == 1) //can only run forward 
@@ -149,9 +134,6 @@ public class PlayerMovement : MonoBehaviour
                 {
                     movementspeed = movespeed;
                     isRunning = false;
-
-                    femModel.SetBool("IsRunning", isRunning);
-                    femModel.SetBool("IsWalking", !isRunning);
                 }
                 if (PlayerStats.PlayersStamina < PlayerStats.MaxStamina && isRunning == false)
                 {

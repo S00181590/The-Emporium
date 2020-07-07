@@ -11,7 +11,7 @@ public class EnemeyHealth : MonoBehaviour
 
     public GameObject healthBarUI;
     public Slider healthslider;
-
+    public ParticleSystem DeathEffecht;
     private void Start()
     {
         health = MaxHealth;
@@ -30,6 +30,7 @@ public class EnemeyHealth : MonoBehaviour
 
         if(health <=0)
         {
+            Instantiate(DeathEffecht, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 

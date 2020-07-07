@@ -8,9 +8,6 @@ TagManager:
   - Resource
   - CraftTable
   - Door
-  - Shelf
-  - ShelfUi
-  - ShelfUI
   - fence
   - Enemy
   - PlayersArrow
@@ -20,6 +17,13 @@ TagManager:
   - TillSpot
   - Till
   - Customer
+  - sign
+  - EnemyArrow
+  - RedSlimeAttack
+  - PathNode
+  - BlueSlimeAttack
+  - GreenSlimeAttack
+  - FireBall
   layers:
   - Default
   - TransparentFX

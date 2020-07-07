@@ -6,15 +6,13 @@ public class InventoryUI : MonoBehaviour
 {
     BackupInventory inventory;
 
-    public bool crafting, invent;
+    public bool crafting;
 
     public GameObject inventoryUI, itemDisplay;
 
     public GameObject itemslotParent;
 
     public GameObject Inventorycam, mainCam;
-
-    public Animator FemChar;
 
     public GameObject Player;
 
@@ -28,8 +26,6 @@ public class InventoryUI : MonoBehaviour
         normal = Time.timeScale;
         inventory = BackupInventory.instance;
         inventory.changedCallback += UpdateUI;
-
-        invent = false;
 
         crafting = false;
 
@@ -78,8 +74,6 @@ public class InventoryUI : MonoBehaviour
 
                 Player.GetComponent<PlayerMovement>().cutscene = Player.GetComponent<PlayerMovement>().cutscene;
 
-                invent = !invent;
-
                 mainCam.SetActive(!mainCam.activeSelf);
 
             }
@@ -93,7 +87,6 @@ public class InventoryUI : MonoBehaviour
 
         }
 
-                FemChar.SetBool("InInventory", invent);
     }
 
     public void uiSwitch()
