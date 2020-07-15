@@ -65,5 +65,14 @@ public class EnemeyHealth : MonoBehaviour
         {
             health -= 20;
         }
+        if (other.tag.Equals("GroundMagic"))
+        {
+            health -= 20;
+        }
+        if (other.tag.Equals("IceMagic"))
+        {
+            health -= 20;
+            
+        }
     }
 }

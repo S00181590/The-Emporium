@@ -20,6 +20,11 @@ TagManager:
   - TillSpot
   - Till
   - Customer
+  - FireBall
+  - IceMagic
+  - GroundMagic
+  - EnemyArrow
+  - MagicShield
   layers:
   - Default
   - TransparentFX

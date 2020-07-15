@@ -1704,6 +1704,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spell: {fileID: 6966400601254086655, guid: b6ae1be66c90563459a318764bc048f4, type: 3}
+  spell2: {fileID: 5140138477564488573, guid: 06fa8ff1aab95fc41a0e1f4f76276d36, type: 3}
+  spell3: {fileID: 2914948966534307741, guid: 976da194e4ca41e4592d5096a1f6b209, type: 3}
   projectileSpeed: 5
 --- !u!82 &8624688787194043335
 AudioSource:
@@ -1712,7 +1714,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6404660610701988835}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cabd41c86dc59954db66dac1dd315609, type: 3}
