@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scotts/Main Menu/MainMenu.unity
     guid: 1cb4c08398f7c76419d7924eaff79754
   - enabled: 1
-    path: Assets/Scotts/CharacterSelectionScence.unity
+    path: Assets/Scotts/CharacterSelectionScene.unity
     guid: 645819f2105b89741aef6856e1dd29b5
   - enabled: 1
     path: Assets/Scotts/savemenu.unity

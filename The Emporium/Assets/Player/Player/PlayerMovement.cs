@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     GameObject character;
 
-    public Animator femModel;
+    public Animator femModel, maleModel;
 
     private Vector3 desireDirection;
 
@@ -64,11 +64,26 @@ public class PlayerMovement : MonoBehaviour
 
         if(x > 0 || z > 0)
         {
-            femModel.SetBool("IsWalking", true);
+            if(femModel.gameObject.activeSelf)
+            {
+                femModel.SetBool("IsWalking", true);
+            }
+            else
+            {
+                maleModel.SetBool("IsWalking", true);
+            }
+            
         }
         else
         {
-            femModel.SetBool("IsWalking", false);
+            if (femModel.gameObject.activeSelf)
+            {
+                femModel.SetBool("IsWalking", false);
+            }
+            else
+            {
+                maleModel.SetBool("IsWalking", false);
+            }
         }
 
         if (!cutscene)
@@ -136,23 +151,33 @@ public class PlayerMovement : MonoBehaviour
                     sprint();
                     //movementspeed = Runningspeed;
 
-                    femModel.SetBool("IsRunning", isRunning);
-                    femModel.SetBool("IsWalking", !isRunning);
+                    if (femModel.gameObject.activeSelf)
+                    {
+                        femModel.SetBool("IsRunning", isRunning);
+                        femModel.SetBool("IsWalking", !isRunning);
+                    }
+                    else
+                    {
+                        maleModel.SetBool("IsRunning", isRunning);
+                        maleModel.SetBool("IsWalking", !isRunning);
+                    }
                     //isRunning = true;
                 }
-                //if (Input.GetKey(KeyCode.LeftShift) && z == 1) //can only run forward 
-                //{
-
-                //    //movementspeed = Runningspeed;
-                //    isRunning = false;
-                //}
                 else
                 {
                     movementspeed = movespeed;
                     isRunning = false;
 
-                    femModel.SetBool("IsRunning", isRunning);
-                    femModel.SetBool("IsWalking", !isRunning);
+                    if (femModel.gameObject.activeSelf)
+                    {
+                        femModel.SetBool("IsRunning", isRunning);
+                        femModel.SetBool("IsWalking", !isRunning);
+                    }
+                    else
+                    {
+                        maleModel.SetBool("IsRunning", isRunning);
+                        maleModel.SetBool("IsWalking", !isRunning);
+                    }
                 }
                 if (PlayerStats.PlayersStamina < PlayerStats.MaxStamina && isRunning == false)
                 {

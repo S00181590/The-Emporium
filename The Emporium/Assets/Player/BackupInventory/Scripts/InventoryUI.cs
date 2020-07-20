@@ -14,7 +14,7 @@ public class InventoryUI : MonoBehaviour
 
     public GameObject Inventorycam, mainCam;
 
-    public Animator FemChar;
+    public Animator FemChar, maleChar;
 
     public GameObject Player;
 
@@ -49,6 +49,14 @@ public class InventoryUI : MonoBehaviour
 
         slots = itemslotParent.GetComponentsInChildren<ItemSlot>();
 
+        if(FemChar.gameObject.activeSelf)
+        {
+
+        }
+        else
+        {
+
+        }
     }
 
     // Update is called once per frame
@@ -93,7 +101,16 @@ public class InventoryUI : MonoBehaviour
 
         }
 
-                FemChar.SetBool("InInventory", invent);
+        if (FemChar.gameObject.activeSelf)
+        {
+            FemChar.SetBool("InInventory", invent);
+        }
+        else
+        {
+            maleChar.SetBool("InInventory", invent);
+        }
+
+        
     }
 
     public void uiSwitch()

@@ -9,7 +9,7 @@ public class Characterselction : MonoBehaviour
 
     private Vector3 CharacterPos;//pos where the charcther is placed  on the screen
     private Vector3 CharacterPosOffScreen;//pos where the charcther is placed off the screen 
-    private int CharacterNumber = 1;
+    public int CharacterNumber = 1;
     private SpriteRenderer MaleCharacterrender, FemaleCharacterrender;// useing the spriye render to only draw one sprite o the screen when the selection button is pressed helps save on perfomance
     private void Awake()
     {
