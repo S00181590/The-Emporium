@@ -10,7 +10,7 @@ public class CheckShop : MonoBehaviour
     {
         SceneManager.LoadScene("ShopScene", LoadSceneMode.Additive);
         SceneManager.LoadScene("WorldScene", LoadSceneMode.Additive);
-        SceneManager.LoadScene("PlayerScene", LoadSceneMode.Additive);
+        SceneManager.LoadScene("TownScene", LoadSceneMode.Additive);
 
         
     }
