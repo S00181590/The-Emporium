@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Player/PlayerScene.unity
+- path: Assets/Scotts/Main Menu/MainMenu.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

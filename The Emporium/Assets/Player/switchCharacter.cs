@@ -92,7 +92,7 @@ public class switchCharacter : MonoBehaviour
         {
             character = selection.CharacterNumber; // 1 is female, male is 2
 
-            SceneManager.LoadScene("TownScene");
+            SceneManager.LoadScene("PlayerScene");
         }
     }
 }

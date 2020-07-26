@@ -119,46 +119,9 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
-      does not match position in animation file:\n\t'LeftUpperLeg' : position error
-      = 94.258179 mm\n\t'LeftLowerLeg' : position error = 371.347107 mm\n\t'LeftFoot'
-      : position error = 439.099976 mm\n\t'LeftToe' : position error = 138.221573
-      mm\n\t'Spine' : position error = 56.579342 mm\n\t'Chest' : position error =
-      117.736435 mm\n\t'UpperChest' : position error = 130.929077 mm\n\t'RightShoulder'
-      : position error = 102.120750 mm\n\t'RightUpperArm' : position error = 89.549431
-      mm\n\t'RightLowerArm' : position error = 237.742737 mm\n\t'RightHand' : position
-      error = 232.371674 mm\n\t'RightThumb' : position error = 20.755737 mm\n\t'RightThumbMiddle'
-      : position error = 50.457817 mm\n\t'RightThumbTip' : position error = 31.037184
-      mm\n\t'RightRing' : position error = 73.825645 mm\n\t'RightRingMiddle' : position
-      error = 37.222366 mm\n\t'RightRingTip' : position error = 21.481014 mm\n\t'RightMiddle'
-      : position error = 72.445137 mm\n\t'RightMiddleMiddle' : position error = 40.126343
-      mm\n\t'RightMiddleTip' : position error = 24.754608 mm\n\t'RightPinky' : position
-      error = 74.571815 mm\n\t'RightPinkyMiddle' : position error = 34.047462 mm\n\t'RightPinkyTip'
-      : position error = 19.622396 mm\n\t'RightIndex' : position error = 73.339783
-      mm\n\t'RightIndexMiddle' : position error = 36.023918 mm\n\t'RightIndexTip'
-      : position error = 22.179546 mm\n\t'LeftShoulder' : position error = 102.118340
-      mm\n\t'LeftUpperArm' : position error = 89.550774 mm\n\t'LeftLowerArm' : position
-      error = 237.740509 mm\n\t'LeftHand' : position error = 232.372055 mm\n\t'LeftThumb'
-      : position error = 20.755718 mm\n\t'LeftThumbMiddle' : position error = 50.457832
-      mm\n\t'LeftThumbTip' : position error = 31.037266 mm\n\t'LeftRing' : position
-      error = 73.825645 mm\n\t'LeftRingMiddle' : position error = 37.222534 mm\n\t'LeftRingTip'
-      : position error = 21.480808 mm\n\t'LeftMiddle' : position error = 72.445251
-      mm\n\t'LeftMiddleMiddle' : position error = 40.126282 mm\n\t'LeftMiddleTip'
-      : position error = 24.754677 mm\n\t'LeftPinky' : position error = 74.572067
-      mm\n\t'LeftPinkyMiddle' : position error = 34.046986 mm\n\t'LeftPinkyTip' :
-      position error = 19.622719 mm\n\t'LeftIndex' : position error = 73.339745 mm\n\t'LeftIndexMiddle'
-      : position error = 36.024147 mm\n\t'LeftIndexTip' : position error = 22.179550
-      mm\n\t'Neck' : position error = 129.448624 mm\n\t'Head' : position error =
-      73.744232 mm\n\t'RightEye' : position error = 78.196045 mm\n\t'LeftEye' : position
-      error = 78.196045 mm\n"
+    rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'skelton|InventoryUseAnim' has import animation
-      warnings that might lower retargeting quality:\nNote: Activate translation
-      DOF on avatar to improve retargeting quality.\n\t'LeftRing' has translation
-      animation that will be discarded.\n\t'LeftRingMiddle' has translation animation
-      that will be discarded.\n\t'LeftMiddle' has translation animation that will
-      be discarded.\n\t'LeftMiddleMiddle' has translation animation that will be
-      discarded.\n\t'LeftPinkyMiddle' has translation animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -461,7 +424,7 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
