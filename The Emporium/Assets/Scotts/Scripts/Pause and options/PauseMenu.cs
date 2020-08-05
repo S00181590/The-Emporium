@@ -35,24 +35,35 @@ public class PauseMenu : MonoBehaviour
             IsPaused = !IsPaused;
 
         }
+
         if (IsPaused)
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
+            if(Cursor.lockState != CursorLockMode.None)
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
 
         }
-
-        else if (!IsPaused)
+        else
         {
             pauseMenu.SetActive(false);
             Time.timeScale = 1f;
+
+            if(Cursor.lockState != CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+
         }
-        else if (OptionsOpen)
+
+        if(OptionsOpen)
         {
             Options.SetActive(true);
             Time.timeScale = 0f;
         }
-        else if (!OptionsOpen)
+        else
         {
             Options.SetActive(false);
             Time.timeScale = 1f;
@@ -109,12 +120,14 @@ public class PauseMenu : MonoBehaviour
     }
     public void ResumeTheGame()
     {
-        IsPaused = !IsPaused;
-        if (!IsPaused)
-        {
-            pauseMenu.SetActive(false);
-            Time.timeScale = 1f;
-        }
+        IsPaused = false;
+
+        //if (!IsPaused)
+        //{
+        Cursor.lockState = CursorLockMode.Locked;
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        //}
     }
     public void SaveSettings()
     {
