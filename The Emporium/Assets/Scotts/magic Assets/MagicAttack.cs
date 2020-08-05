@@ -40,7 +40,7 @@ public class MagicAttack : MonoBehaviour
 
 
     //    }
-        if (Input.GetKeyDown(KeyCode.X) && playerStats.PlayersMana > 0 && weaponSwitcher.EquippedWeapon == 5)
+        if (Input.GetKeyDown(KeyCode.X) )
         {
 
             GameObject IceAttack = Instantiate(spell2, transform);
