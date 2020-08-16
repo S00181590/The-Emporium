@@ -11,6 +11,8 @@ public class CustomerController : NavMeshMover
 
     public GameObject lookto, portal, till, shopState;
 
+    public Vector3 wander;
+
     public bool purchased;
 
     public int desireAmount, budget, upperSpend;
@@ -30,6 +32,8 @@ public class CustomerController : NavMeshMover
 
         shelves.AddRange(GameObject.FindGameObjectsWithTag("ShelfSpot"));
 
+        wander = transform.position += new Vector3(0, 0, 2f);
+
         foreach(GameObject g in shelves)
         {
             if(g.GetComponentInParent<ShelfHolder>().holding != null)
@@ -46,7 +50,11 @@ public class CustomerController : NavMeshMover
 
         desireAmount = Random.Range(1, (int)howmany);
 
-        lookto = products[0];
+        if(lookto != null)
+        {
+            lookto = products[0];
+        }
+
 
     }
 
@@ -88,10 +96,25 @@ public class CustomerController : NavMeshMover
                         }
                     }
 
-                    if(gameObject.transform.position != lookto.transform.position)
+                    if(lookto != null)
                     {
-                        agent.SetDestination(lookto.transform.position);
+                        if(gameObject.transform.position != lookto.transform.position)
+                        {
+                            agent.SetDestination(lookto.transform.position);
+                        }
                     }
+                    else
+                    {
+                        if(transform.position != wander)
+                        {
+                            agent.SetDestination(wander);
+                        }
+                        else
+                        {
+                            agent.SetDestination(portal.transform.position);
+                        }
+                    }
+
                 }
                 else
                 {

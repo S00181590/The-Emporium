@@ -9,7 +9,7 @@ public class ItemSlot : MonoBehaviour
 
     public Image icon;
 
-    public Animator FemAnim;
+    public Animator FemAnim, maleAnim, character;
 
     public GameObject itemName, craftUI;
 
@@ -23,7 +23,8 @@ public class ItemSlot : MonoBehaviour
 
         craftUI = GameObject.Find("ShopStateSave").GetComponent<ShopStatesReference>().craftingUI;
 
-        //FemAnim = GameObject.Find("MC_FemaleFullRig").GetComponent<Animator>();
+        character = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Animator>();
+
     }
 
     public void AddItem(Item newitem)
@@ -55,13 +56,17 @@ public class ItemSlot : MonoBehaviour
 
     public void OnRemoveButton()
     {
+
         Instantiate(item.physical, GameObject.Find("Character").transform.position, new Quaternion(0, Random.Range(1,360),0, 0));
-        FemAnim.SetBool("UseInventory", true);
+
+        character.SetBool("UseInventory", true);
+
         BackupInventory.instance.Remove(item);
     }
 
     public void UseItem()
     {
+
         GameObject[] shelfs = GameObject.FindGameObjectsWithTag("ShelfUi"); 
         if(item != null)
         {
@@ -77,7 +82,7 @@ public class ItemSlot : MonoBehaviour
             }
             else
             {
-                FemAnim.SetBool("UseInventory", true);
+                character.SetBool("UseInventory", true);
             }
 
             if (shelfs.Length > 0)

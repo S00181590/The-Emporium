@@ -8,6 +8,8 @@ public class CustomerSpawn : MonoBehaviour
     public GameObject Customer, till, spawnpoint;
     public bool Selling;
 
+    public PResourceManager pManager;
+
     Renderer portalActive;
 
     // Start is called before the first frame update
@@ -16,6 +18,10 @@ public class CustomerSpawn : MonoBehaviour
         shopRep = GameObject.FindGameObjectsWithTag("Shelf").Length/2;
 
         CustomerCount = Random.Range(1, 1 + shopRep);
+
+        pManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PResourceManager>();
+
+        pManager.customerset = gameObject;
 
         Selling = false;
 
@@ -35,7 +41,7 @@ public class CustomerSpawn : MonoBehaviour
             if(CustomerCount > 0)
             {
                 //SpawnAfterDelay(3f);
-                GameObject g = Instantiate(Customer, spawnpoint.transform.position += new Vector3(0,2,0), new Quaternion(0,0,0,0));
+                GameObject g = Instantiate(Customer, spawnpoint.transform.position += new Vector3(0,1.5f,0), new Quaternion(0,0,0,0));
 
                 //g.transform.localPosition = Vector3.zero;
                 CustomerCount--;
@@ -45,6 +51,11 @@ public class CustomerSpawn : MonoBehaviour
                 if(GameObject.FindGameObjectsWithTag("Customer") == null)
                 {
                     Selling = false;
+
+                    if (portalActive.material.shader != Shader.Find("Universal Render Pipeline/Lit"))
+                    {
+                        portalActive.material.shader = Shader.Find("Universal Render Pipeline/Lit");
+                    }
                 }
             }
 
@@ -62,13 +73,24 @@ public class CustomerSpawn : MonoBehaviour
                 portalActive.material.shader = Shader.Find("Universal Render Pipeline/Lit");
             }
 
+
+
             if(CustomerCount > 0)
             {
                 Selling = till.GetComponent<TillControl>().open;
             }
+            //else
+            //{
+            //    till.GetComponent<TillControl>().open = false;
+            //}
         }
 
         
+    }
+
+    public void Reset()
+    {
+        CustomerCount = Random.Range(1, 1 + shopRep);
     }
 
     private bool isCoroutineExecuting;

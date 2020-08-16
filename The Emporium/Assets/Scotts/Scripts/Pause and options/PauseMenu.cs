@@ -38,7 +38,11 @@ public class PauseMenu : MonoBehaviour
 
         if (IsPaused)
         {
-            pauseMenu.SetActive(true);
+            if(pauseMenu.activeSelf != true)
+            {
+                pauseMenu.SetActive(true);
+            }
+
             Time.timeScale = 0f;
             if(Cursor.lockState != CursorLockMode.None)
             {
@@ -51,10 +55,10 @@ public class PauseMenu : MonoBehaviour
             pauseMenu.SetActive(false);
             Time.timeScale = 1f;
 
-            if(Cursor.lockState != CursorLockMode.Locked)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-            }
+            //if(Cursor.lockState != CursorLockMode.Locked)
+            //{
+            //    Cursor.lockState = CursorLockMode.Locked;
+            //}
 
         }
 

@@ -10,7 +10,7 @@ public class TillControl : MonoBehaviour
 
     public bool open;
 
-    public GameObject shopUi, customer;
+    public GameObject shopUi, customer, player;
 
     private GameObject tillCam, mainCam, shopState;
 
@@ -42,7 +42,39 @@ public class TillControl : MonoBehaviour
 
         if(GameObject.FindGameObjectWithTag("Customer") == null && GameObject.FindGameObjectWithTag("Portal").GetComponent<CustomerSpawn>().CustomerCount == 0)
         {
-            open = false;
+            if(open != false)
+            {
+                open = false;
+            }
+
+        }
+
+        if(open == false)
+        {
+            if(tillCam.activeSelf == true)
+            {
+                SwitchCam();
+
+                //shopUi.SetActive(false);
+
+                if(player != null)
+                {
+                    player.GetComponent<PlayerMovement>().cutscene = false;
+                }
+
+
+                //.FindGameObjectWithTag("Player").GetComponent<>().cutscene = false;
+            }
+
+            if(GameObject.Find("Town").GetComponent<DayNightCycle>().Day == false)
+            {
+                if(GameObject.FindGameObjectWithTag("Portal").GetComponent<CustomerSpawn>().CustomerCount == 0)
+                {
+                    GameObject.FindGameObjectWithTag("Portal").GetComponent<CustomerSpawn>().Selling = false;
+                    GameObject.FindGameObjectWithTag("Portal").GetComponent<CustomerSpawn>().Reset();
+                }
+            }
+
         }
     }
 

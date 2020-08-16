@@ -8,7 +8,7 @@ public class PResourceManager : MonoBehaviour
 
     public Inventory Inventory;
 
-    public GameObject nearest;
+    public GameObject nearest, customerset;
 
     // Start is called before the first frame update
     void Start()
@@ -115,8 +115,13 @@ public class PResourceManager : MonoBehaviour
                 other.gameObject.GetComponent<Animator>().SetBool("IsNear", true);
                 break;
             case "Till":
-                other.GetComponent<TillControl>().SwitchCam();
-                gameObject.GetComponent<PlayerMovement>().cutscene = true;
+                if(customerset.GetComponent<CustomerSpawn>().CustomerCount > 0)
+                {
+                    other.GetComponent<TillControl>().SwitchCam();
+                    other.GetComponent<TillControl>().player = gameObject;
+                    other.GetComponent<TillControl>().open = true;
+                    gameObject.GetComponent<PlayerMovement>().cutscene = true;
+                }
                 break;
         }
         
