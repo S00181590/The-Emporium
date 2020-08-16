@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &539565842961885523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 539565842961885525}
+  - component: {fileID: 539565842961885524}
+  m_Layer: 0
+  m_Name: Quest Giver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &539565842961885525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539565842961885523}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 416.64166, y: 229.8015, z: -19.368067}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &539565842961885524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539565842961885523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f8efbde2c46ee5408d08f808b49ba7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quest:
+    Isactivate: 0
+    title: kill three monsters
+    Description: there is a group of monster outside the town please kill them
+    GoldReward: 100
+    ItemReward: {fileID: 8131055701968966518, guid: 817760021a4f3534b91aed659910669c,
+      type: 3}
+    goal:
+      goalType: 0
+      requiredamount: 3
+      currentamount: 0
+  player: {fileID: 0}
+  questwindow: {fileID: 0}
+  Titletext: {fileID: 0}
+  descriptiontext: {fileID: 0}
+  Goldtext: {fileID: 0}
+  Itemtext: {fileID: 0}

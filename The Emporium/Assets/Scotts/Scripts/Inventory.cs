@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     public UIInventory inventoryUI;
 
     public int playersMoney;
-
+    public Quest quest;
     private void Start()
     {
         GiveItem(0);
@@ -24,6 +24,11 @@ public class Inventory : MonoBehaviour
         {
             inventoryUI.gameObject.SetActive(!inventoryUI.gameObject.activeSelf);
         }
+
+        //if (quest.Isactivate)
+        //{
+        //    quest.goal
+        //}
     }
 
     public void GiveItem(int id)
@@ -36,9 +41,11 @@ public class Inventory : MonoBehaviour
     public Item checkForItem(int id)
     {
         return playerItems.Find(item => item.id == id);
-    }
 
-    public void RemoveItem(int id )
+
+    }
+ 
+public void RemoveItem(int id )
     {
         Item ItemToRemove = checkForItem(id);
         if(ItemToRemove != null)
