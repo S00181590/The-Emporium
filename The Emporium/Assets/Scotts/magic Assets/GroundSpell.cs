@@ -27,7 +27,7 @@ public class GroundSpell : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
        // GroundSound.Play();
-        Destroy(gameObject);
+        Destroy(this.gameObject);
 
     }
 

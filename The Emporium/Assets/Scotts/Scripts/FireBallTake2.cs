@@ -30,7 +30,7 @@ public class FireBallTake2 : MonoBehaviour
         //    transform.position.x + (movementspeed * Time.deltaTime),
         //    transform.position.y, transform.position.z);
 
-        if (Input.GetKeyDown(KeyCode.Z) && playerStats.PlayersMana > 0 && weaponSwitcher.EquippedWeapon == 4)
+        if (Input.GetKeyDown(KeyCode.Z) && playerStats.PlayersMana > 0 )
         {
 
             GameObject FireBall = Instantiate(spell, transform);
@@ -46,7 +46,7 @@ public class FireBallTake2 : MonoBehaviour
         void OnCollisionEnter(Collision other)
     {
        // explosionsound.Play();
-        Destroy(gameObject);
+        Destroy(this.gameObject);
 
     }
 

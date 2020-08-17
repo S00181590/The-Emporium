@@ -33,6 +33,10 @@ public class PlayerStats : MonoBehaviour
     LockOnController lockOnController;
     [SerializeField] Text AutosaveText;
 
+    //quest stuff
+    public Quest quest;
+    public GameObject questitem;
+
     public ParticleSystem playerDeathFx;
     //public void OnTriggerEnter(Collider other)
     //{
@@ -56,7 +60,7 @@ public class PlayerStats : MonoBehaviour
         PlayersStamina = MaxStamina;
         PlayersMana = MaxMana;
         PlayersHealth = MaxHealth;
-
+        quest = GetComponent<Quest>();
         //healthslider.value = GetCurrentStamina();
        // healthslider.value = GetCurrentMana();
        // healthslider.value = GetCurrentHealth();
@@ -184,6 +188,18 @@ public class PlayerStats : MonoBehaviour
         if (Input.GetKey(KeyCode.Q))
         {
             GameObject.FindGameObjectsWithTag("Enemy");
+        }
+    }
+
+   public void isquestactivate()
+    {
+        quest.goal.EnemeyKills();
+        if(quest.goal.IsGoalReached())
+        {
+            money += quest.GoldReward;
+            questitem = quest.ItemReward;
+            quest.Complete();
+
         }
     }
     //void MaigSpellAttack()

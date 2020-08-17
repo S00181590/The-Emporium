@@ -26,7 +26,7 @@ public class IceSpeel : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
        // IceSound.Play();
-        Destroy(gameObject);
+        Destroy(this.gameObject);
 
     }
 

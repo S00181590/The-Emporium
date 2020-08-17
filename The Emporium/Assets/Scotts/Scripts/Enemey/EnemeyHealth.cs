@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemeyHealth : MonoBehaviour
+public class EnemeyHealth : MonoBehaviour 
 {
     public float health;
     public float MaxHealth;
@@ -12,11 +12,14 @@ public class EnemeyHealth : MonoBehaviour
     public GameObject healthBarUI;
     public Slider healthslider;
     public ParticleSystem DeathEffecht;
+    Questgola questgoal;
+    
 
     private void Start()
     {
         health = MaxHealth;
         healthslider.value = GetCurrentHealth();
+        questgoal = GetComponent<Questgola>();
     }
 
     private void Update()
@@ -52,6 +55,7 @@ public class EnemeyHealth : MonoBehaviour
         health -= amount;
         if (health <= 0)
         {
+            questgoal.currentamount++;
             Destroy(gameObject);
         }
     }
@@ -63,15 +67,15 @@ public class EnemeyHealth : MonoBehaviour
         }
         if (other.tag.Equals("FireBall"))
         {
-            health -= 20;
+            health -= 15;
         }
         if (other.tag.Equals("GroundMagic"))
         {
-            health -= 20;
+            health -= 35;
         }
         if (other.tag.Equals("IceMagic"))
         {
-            health -= 20;
+            health -= 25;
             
         }
     }

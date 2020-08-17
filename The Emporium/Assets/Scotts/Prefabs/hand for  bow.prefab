@@ -106,10 +106,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d09a230137ba5d945b8b7bd5968d797a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowPrefabs: {fileID: 6107511256255904291, guid: 52ea83130ce3aab4fa5b164c4a91b581,
+  arrowPrefabs: {fileID: 6107511256255904291, guid: 8a396bd6bb3f6574c9a2e8e31bbd9f24,
     type: 3}
   arrowSpawnPosition: {fileID: 8993288089516368635}
   shootpower: 10
+  mainCam: {fileID: 0}
+  AimCamL: {fileID: 0}
+  aiming: 0
 --- !u!1 &4934453863654352777
 GameObject:
   m_ObjectHideFlags: 0
