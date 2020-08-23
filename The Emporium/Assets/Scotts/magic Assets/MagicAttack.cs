@@ -94,12 +94,7 @@ public class MagicAttack : MonoBehaviour
 
 
         }
-        if (playerStats.PlayersMana < playerStats.MaxMana)
-        {
-            {
-                playerStats.PlayersMana += 5 * Time.deltaTime;
-            }
-        }
+       
     }
 
     void Groundattack()

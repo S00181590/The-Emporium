@@ -23,6 +23,7 @@ public class Health : MonoBehaviour
 
     public void Heal(float amount)
     {
+       
         _currentHealth += amount;
         if(_currentHealth >PlayerHealth)
         {

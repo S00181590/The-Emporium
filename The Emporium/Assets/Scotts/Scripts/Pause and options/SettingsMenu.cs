@@ -98,9 +98,9 @@ public class SettingsMenu : MonoBehaviour
         Screen.fullScreen = gameOptions.FullScreen;
         ResoulionDropDownSettings.RefreshShownValue();
         BrightnessSlider.value = gameOptions.Brightness;
-        ////might have to change 
-        //VSyncEnabled.isOn = gameOptions.VSync;
-        //VSyncEnabled.enabled = gameOptions.VSync;
+        //might have to change 
+       // VSyncEnabled.isOn = gameOptions.VSync;
+       // VSyncEnabled.enabled = gameOptions.VSync;
     }
 }
 
