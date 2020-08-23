@@ -9,7 +9,9 @@ public class AiPathFollow : NavMeshMover
     public override void Start()
     {
         base.Start();
-        
+        MovetoPathNode();
+
+
     }
 
     void MovetoPathNode()

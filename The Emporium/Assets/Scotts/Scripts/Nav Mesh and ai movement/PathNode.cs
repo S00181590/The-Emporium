@@ -13,6 +13,12 @@ public class PathNode : MonoBehaviour
         {
             Gizmos.color = PathDebugColor;
             Gizmos.DrawLine(transform.position, NextNode.transform.position);
+
+            Vector3 direction = NextNode.transform.position - transform.position;
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(transform.position, NextNode.transform.position);
+
         }
+
     }
 }

@@ -36,6 +36,7 @@ public class PlayerStats : MonoBehaviour
     //quest stuff
     public Quest quest;
     public GameObject questitem;
+ public    PlayerMovement playerMovement;
 
     public ParticleSystem playerDeathFx;
     //public void OnTriggerEnter(Collider other)
@@ -55,6 +56,7 @@ public class PlayerStats : MonoBehaviour
     }
     private void Start()
     {
+        playerMovement = GetComponent<PlayerMovement>();
         lockOnController = GetComponent<LockOnController>();
         CurrenTime = StartingTime;
         PlayersStamina = MaxStamina;
@@ -110,6 +112,21 @@ public class PlayerStats : MonoBehaviour
         //{
         //    AutosaveText.gameObject.SetActive(false);
         //}
+
+        if (PlayersMana < MaxMana)
+        {
+            {
+                PlayersMana += 5 * Time.deltaTime;
+            }
+        }
+
+        if (PlayersStamina < MaxStamina )
+        {
+
+            {
+                PlayersStamina += 4 * Time.deltaTime;
+            }
+        }
     }
 
     public virtual void CheckStamina()
@@ -135,7 +152,7 @@ public class PlayerStats : MonoBehaviour
             PlayersMana = 0;
         }
     }
-    float GetCurrentStamina()
+   public  float GetCurrentStamina()
     {
         return PlayersStamina / MaxStamina;
     }
@@ -202,6 +219,8 @@ public class PlayerStats : MonoBehaviour
 
         }
     }
+
+
     //void MaigSpellAttack()
     //{
         

@@ -30,8 +30,8 @@ public class PlayerMovement : MonoBehaviour
     float dogdeSpeed = 60;
     float movespeed = 5;
     float walkspeed = 5;
-    float Runningspeed = 10;
-    bool isRunning;
+   public  float Runningspeed = 10;
+   public  bool isRunning;
     PlayerStats PlayerStats;
     float jumpheight = 5;
     bool isGrounded;
@@ -179,13 +179,7 @@ public class PlayerMovement : MonoBehaviour
                         maleModel.SetBool("IsWalking", !isRunning);
                     }
                 }
-                if (PlayerStats.PlayersStamina < PlayerStats.MaxStamina && isRunning == false)
-                {
-
-                    {
-                        PlayerStats.PlayersStamina += 8 * Time.deltaTime;
-                    }
-                }
+                
                 if (Input.GetKeyDown(KeyCode.Space) && isRunning == false)
                 {
 
@@ -208,10 +202,14 @@ public class PlayerMovement : MonoBehaviour
 
         void sprint()
         {
-            movementspeed = Runningspeed;
-            isRunning = true;
-            PlayerStats.PlayersStamina -= 10 * Time.deltaTime;
-            PlayerStats.CheckStamina();
+            if(PlayerStats.PlayersStamina >=5)
+            {
+
+             movementspeed = Runningspeed;
+             isRunning = true;
+             PlayerStats.PlayersStamina -= 10 * Time.deltaTime;
+             PlayerStats.CheckStamina();
+            }
         }
     }
 }

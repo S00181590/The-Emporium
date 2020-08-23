@@ -542,6 +542,8 @@ GameObject:
   - component: {fileID: 4294648160076560803}
   - component: {fileID: 4294648160076560826}
   - component: {fileID: 3488480612654815280}
+  - component: {fileID: 6241995994850370720}
+  - component: {fileID: 2425662917138810555}
   m_Layer: 0
   m_Name: redslime useing normal projetiles (1)
   m_TagString: Enemy
@@ -713,6 +715,36 @@ MonoBehaviour:
   trackingSpeed: 5
   TargetSelcted: {fileID: 6404660610701988835, guid: 5a72305ac380f674890676cc1e49b4db,
     type: 3}
+--- !u!114 &6241995994850370720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4294648160076560804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7cd93e9951c9045b8234d8ceadefc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NextNode: {fileID: 0}
+  PathDebugColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &2425662917138810555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4294648160076560804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 703b957717c7624409ce8cc04b6e6204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 6404660610701988832, guid: 5a72305ac380f674890676cc1e49b4db, type: 3}
+  movespeed: 5
+  stoppingDistance: 1
+  maxfollowdistance: 10
 --- !u!1 &4294648160153338691
 GameObject:
   m_ObjectHideFlags: 0

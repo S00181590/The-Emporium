@@ -6,7 +6,7 @@ public class BackupInventory : MonoBehaviour
 {
     public static BackupInventory instance;
     public List<Item> inventory = new List<Item>();
-    int possessions = 20;
+   public  int possessions = 20;
 
     public delegate void OnItemChanged();
     public OnItemChanged changedCallback;
