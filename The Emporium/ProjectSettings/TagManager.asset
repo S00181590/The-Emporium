@@ -25,6 +25,14 @@ TagManager:
   - GroundMagic
   - EnemyArrow
   - MagicShield
+  - GreenSlimeAttack
+  - sign
+  - BlueSlimeAttack
+  - RedSlimeAttack
+  - PathNode
+  - StatShop
+  - InteractText
+  - SpellList
   layers:
   - Default
   - TransparentFX

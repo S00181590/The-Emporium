@@ -30,7 +30,7 @@ public class Magicshield : MonoBehaviour
         //    transform.position.x + (movementspeed * Time.deltaTime),
         //    transform.position.y, transform.position.z);
 
-        if (Input.GetKeyDown(KeyCode.Alpha4) && playerStats.PlayersMana >=50)
+        if (Input.GetKeyDown(KeyCode.Alpha3) && playerStats.PlayersMana >=50)
         {
            
 

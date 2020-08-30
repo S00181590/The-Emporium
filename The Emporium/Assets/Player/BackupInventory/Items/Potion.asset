@@ -17,5 +17,5 @@ MonoBehaviour:
   descrption: restores all players health
   Value: 10
   physical: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 79c9e060bd58c6f4f96227cbe508dd58, type: 3}
   isDefaultItem: 0

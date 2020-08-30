@@ -18,16 +18,22 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(Player);
-        if(Vector3.Distance(transform.position,Player.position)>=stoppingDistance)
+        if(Player != null)
         {
-            transform.position += transform.forward * movespeed * Time.deltaTime;
+            if(Vector3.Distance(transform.position,Player.position) <= maxfollowdistance)
+            {
+                transform.LookAt(Player);
+                if(Vector3.Distance(transform.position,Player.position)>=stoppingDistance)
+                {
+                    transform.position += transform.forward * movespeed * Time.deltaTime;
+                }
+            }
+        }
+        else
+        {
+
         }
 
-        if(Vector3.Distance(transform.position,Player.position) <= maxfollowdistance)
-        {
-
-        }
     }
 
    

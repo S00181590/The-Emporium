@@ -10,6 +10,8 @@ public class ResourceSpawner : MonoBehaviour
 
     public process current;
 
+    private GameObject player;
+
     private BoxCollider area;
 
     Random R;
@@ -24,24 +26,43 @@ public class ResourceSpawner : MonoBehaviour
         amount = 0;
 
         area = gameObject.GetComponent<BoxCollider>();
+
+        if(GameObject.Find("MC_FemaleFullRig") == null)
+        {
+            player = GameObject.Find("MC_Male");
+        }
+        else
+        {
+            player = GameObject.Find("MC_FemaleFullRig");
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (current == process.spawning)
+        if(Vector3.Distance(player.transform.position,gameObject.transform.position) <= 40)
         {
-            if (amount == 0)
+            if (current == process.spawning)
             {
-                amount = Bounty();
-            }
-            else
-            {
-                findpin();
-                findPlant();
-                plantResource();
+                if (amount == 0)
+                {
+                    amount = Bounty();
+                }
+                else
+                {
+                    findpin();
+                    findPlant();
+
+                    if(plant != Vector3.zero)
+                    {
+                        plantResource();
+                    }
+
+                }
             }
         }
+
     }
 
     private void plantResource()
@@ -70,11 +91,15 @@ public class ResourceSpawner : MonoBehaviour
 
         if(Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            Debug.DrawLine(ray.origin, hit.point,Color.white, 10f);
+            //Debug.DrawLine(ray.origin, hit.point,Color.white, 10f);
 
             if (hit.collider.gameObject.tag == "Terrain")
             {
                 plant = hit.point;
+            }
+            else
+            {
+                plant = Vector3.zero;
             }
 
         }
@@ -91,6 +116,6 @@ public class ResourceSpawner : MonoBehaviour
 
     public int Bounty()
     {
-        return (int)Random.Range(1f, 10f);
+        return Random.Range(5, 15);
     }
 }

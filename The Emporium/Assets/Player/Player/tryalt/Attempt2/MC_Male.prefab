@@ -1635,8 +1635,7 @@ Transform:
   m_LocalRotation: {x: -0.05653045, y: 0.11600324, z: 0.5528491, w: -0.82322866}
   m_LocalPosition: {x: 0.038498834, y: 0.10958665, z: -0.031609427}
   m_LocalScale: {x: 0.12700006, y: 0.12699999, z: 0.12699997}
-  m_Children:
-  - {fileID: 8768337616649686621}
+  m_Children: []
   m_Father: {fileID: 4973674661909956335}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1655,6 +1654,7 @@ MonoBehaviour:
   spell1: {fileID: 6966400601254086655, guid: b6ae1be66c90563459a318764bc048f4, type: 3}
   spell2: {fileID: 2914948966534307741, guid: 976da194e4ca41e4592d5096a1f6b209, type: 3}
   spell3: {fileID: 5140138477564488573, guid: 06fa8ff1aab95fc41a0e1f4f76276d36, type: 3}
+  spell4: {fileID: 0}
   projectileSpeed: 10
   magicSpawnPosition: {fileID: 8768337616649686621}
 --- !u!1 &4204513261820372055
@@ -1718,6 +1718,7 @@ Transform:
   - {fileID: 1409374541046672853}
   - {fileID: 8669844460883834042}
   - {fileID: 8704439884978244381}
+  - {fileID: 8768337616649686621}
   m_Father: {fileID: 1872179909369084419}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2270,13 +2271,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6030154101069685039}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.05753042, y: -0.7176619, z: 0.050472606, w: -0.69217354}
+  m_LocalPosition: {x: -0.044597894, y: -0.17314593, z: 0.23833151}
+  m_LocalScale: {x: 0.12700005, y: 0.12700002, z: 0.12699997}
   m_Children: []
-  m_Father: {fileID: 7204291607990266261}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 5292579102298759171}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 61.052002, y: -54.009003, z: -132.31601}
 --- !u!1 &6049954151529067633
 GameObject:
   m_ObjectHideFlags: 0
@@ -3139,6 +3140,7 @@ MonoBehaviour:
   spell1: {fileID: 0}
   spell2: {fileID: 8646609077396214717}
   spell3: {fileID: 7381732309866081317}
+  spell4: {fileID: 0}
   projectileSpeed: 3
   magicSpawnPosition: {fileID: 0}
 --- !u!1 &8835718024722194525
@@ -3691,15 +3693,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06fa8ff1aab95fc41a0e1f4f76276d36, type: 3}
---- !u!4 &3905089954641255557 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1663504216272772061, guid: 06fa8ff1aab95fc41a0e1f4f76276d36,
-    type: 3}
-  m_PrefabInstance: {fileID: 2388137996283742040}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7381732309866081317 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5140138477564488573, guid: 06fa8ff1aab95fc41a0e1f4f76276d36,
+    type: 3}
+  m_PrefabInstance: {fileID: 2388137996283742040}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3905089954641255557 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1663504216272772061, guid: 06fa8ff1aab95fc41a0e1f4f76276d36,
     type: 3}
   m_PrefabInstance: {fileID: 2388137996283742040}
   m_PrefabAsset: {fileID: 0}

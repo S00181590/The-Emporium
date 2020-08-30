@@ -467,9 +467,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 6404660610701988832, guid: 5a72305ac380f674890676cc1e49b4db, type: 3}
-  movespeed: 5
+  movespeed: 3
   stoppingDistance: 5
-  maxfollowdistance: 5
+  maxfollowdistance: 10
 --- !u!1001 &2772019617510751387
 PrefabInstance:
   m_ObjectHideFlags: 0

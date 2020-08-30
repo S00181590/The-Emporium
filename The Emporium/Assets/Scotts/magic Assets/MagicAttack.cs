@@ -47,9 +47,13 @@ public class MagicAttack : MonoBehaviour
             if (playerStats.PlayersMana >= 10)
             {
 
-                GameObject FireBall = Instantiate(spell1, transform);
+                GameObject FireBall = Instantiate(spell1, magicSpawnPosition);
+                FireBall.transform.parent = null;
+                FireBall.transform.localPosition = Vector3.zero;
+                FireBall.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+                FireBall.transform.localPosition = new Vector3(magicSpawnPosition.position.x, magicSpawnPosition.position.y, magicSpawnPosition.position.z);
                 Rigidbody rb = FireBall.GetComponent<Rigidbody>();
-                rb.velocity = transform.forward * projectileSpeed;//speed the fire ball travels and direction 
+                rb.velocity = magicSpawnPosition.forward * projectileSpeed; //speed the fire ball travels and direction 
                 playerStats.PlayersMana -= 10;
             }
 
@@ -59,14 +63,19 @@ public class MagicAttack : MonoBehaviour
             if (playerStats.PlayersMana >= 15)
             {
 
-                GameObject IceAttack = Instantiate(spell2, transform);
-                Rigidbody rb = IceAttack.GetComponent<Rigidbody>();
-                rb.velocity = transform.forward * projectileSpeed;//speed the fire ball travels and direction 
+                GameObject RockAttack = Instantiate(spell3, magicSpawnPosition);
+                RockAttack.transform.parent = null;
+                RockAttack.transform.localPosition = Vector3.zero;
+                RockAttack.transform.localPosition = new Vector3(0, 0, 0);
+                RockAttack.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                RockAttack.transform.localPosition = new Vector3(magicSpawnPosition.position.x, magicSpawnPosition.position.y, magicSpawnPosition.position.z + 1);
+                Rigidbody rb = RockAttack.GetComponent<Rigidbody>();
+                rb.velocity = magicSpawnPosition.forward * projectileSpeed;//speed the fire ball travels and direction 
                 playerStats.PlayersMana -= 15;
             }
 
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
 
             {
@@ -80,18 +89,19 @@ public class MagicAttack : MonoBehaviour
 
 
         }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
 
-            {
-
-                GameObject shield = Instantiate(spell4, transform);
-                Rigidbody rb = shield.GetComponent<Rigidbody>();
-                rb.velocity = magicSpawnPosition.transform.position;
-                playerStats.PlayersMana -= 50;
-                Destroy(spell4, 60.0f);
-            }
-
+            GameObject shield = Instantiate(spell4, transform);
+            shield.transform.parent = null;
+            shield.transform.localPosition = Vector3.zero;
+            shield.transform.localPosition = new Vector3(magicSpawnPosition.position.x,magicSpawnPosition.position.y + -1f, magicSpawnPosition.position.z);
+            shield.transform.localScale = new Vector3(1f, 1f, 1f);
+            shield.transform.SetParent(magicSpawnPosition);
+            //Rigidbody rb = shield.GetComponent<Rigidbody>();
+            //rb.velocity = magicSpawnPosition.transform.position;
+            playerStats.PlayersMana -= 50;
+            Destroy(shield, 20.0f);
 
         }
        
@@ -109,25 +119,17 @@ public class MagicAttack : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("RedSlimeAttack"))
+        switch(other.tag)
         {
-            Destroy(this.gameObject);
-        }
-        if (other.gameObject.tag.Equals("RedSlimeAttack"))
-        {
-            Destroy(this.gameObject);
-        }
-        if (other.gameObject.tag.Equals("GreenSlimeAttack"))
-        {
-            Destroy(this.gameObject);
-        }
-        if (other.gameObject.tag.Equals("BlueSlimeAttack"))
-        {
-            Destroy(this.gameObject);
-        }
-        if (other.gameObject.tag.Equals("RedSlimeAttack"))
-        {
-            Destroy(this.gameObject);
+            case "RedSlimeAttack":
+                Destroy(this.gameObject);
+                break;
+            case "GreenSlimeAttack":
+                Destroy(this.gameObject);
+                break;
+            case "BlueSlimeAttack":
+                Destroy(this.gameObject);
+                break;
         }
     }
 }

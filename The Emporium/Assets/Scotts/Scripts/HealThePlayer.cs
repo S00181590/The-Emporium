@@ -8,52 +8,53 @@ public class HealThePlayer : MonoBehaviour
     public GameObject  Player;
     public int cost;
     PlayerStats playerStats;
-  public   bool playerinrange;
-    public GameObject openplayersInventory;
-    BackupInventory backupInventory;
+    public bool playerinrange;
+    public GameObject openshopInventory;
+    public Item hpotion;
+    //BackupInventory backupInventory;
     // Start is GameObjectcalled before the first frame update
     void Start()
     {
-        playerStats = FindObjectOfType<PlayerStats>();
-        backupInventory = FindObjectOfType<BackupInventory>();
+        Player = GameObject.Find("Character");
+
+        playerStats = Player.GetComponent<PlayerStats>(); /*FindObjectOfType<PlayerStats>()*/;
+        //backupInventory = FindObjectOfType<BackupInventory>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.R) && playerinrange ==true )
+        if(Input.GetKeyDown(KeyCode.E) && playerinrange ==true )
         {
-            openplayersInventory.SetActive(true);
+            openshopInventory.SetActive(!openshopInventory.activeSelf);
+
             if (Cursor.lockState != CursorLockMode.None)
             {
                 Cursor.lockState = CursorLockMode.None;
             }
-
-           
         }
         else
         {
             //openplayersInventory.SetActive(false);
         }
-
-
-    
-
-       
-
     }
 
     public  void  HealPlayerStats()
     {
-        //if(playerStats.money>=50)
-        //{
+        if(playerStats.PlayersHealth < playerStats.MaxHealth || playerStats.PlayersMana < playerStats.MaxMana || 
+           playerStats.PlayersStamina < playerStats.MaxStamina)
+        {
+            if (playerStats.money >= 50)
+            {
 
-         playerStats.PlayersHealth += 1000;
-         playerStats.PlayersMana += 1000;
-         playerStats.PlayersStamina += 1000;
-        // playerStats.money -= 50;
-            Debug.Log("Playersststrestored");
-       // }
+                 playerStats.PlayersHealth = playerStats.MaxHealth;
+                 playerStats.PlayersMana = playerStats.MaxMana;
+                 playerStats.PlayersStamina = playerStats.MaxStamina;
+                 playerStats.money -= 50;
+                Debug.Log("Playersststrestored");
+            }
+        }
+
     }
 
 
@@ -93,7 +94,7 @@ public class HealThePlayer : MonoBehaviour
     }
     public void CloseWindow()
     {
-        openplayersInventory.SetActive(false);
+        openshopInventory.SetActive(false);
 
     }
     public void BuyaDeed()
@@ -109,37 +110,39 @@ public class HealThePlayer : MonoBehaviour
 
     public void BuyHealthPotion()
     {
-        //if (playerStats.money >= 0)
-        //{
-        //    if (backupInventory.inventory.Count <= backupInventory.possessions)
-        //    {
-        //        BackupInventory.instance.inventory.Add();
-        //        playerStats.money -= 150;
+        if (playerStats.money >= 0)
+        {
+            if (BackupInventory.instance.inventory.Count <= BackupInventory.instance.possessions)
+            {
+                BackupInventory.instance.inventory.Add(hpotion);
+                playerStats.money -= 15;
 
-        //    }
-        //}
+            }
+        }
         Debug.Log("Healthpotionbrought");
+
+        BackupInventory.instance.changedCallback();
         
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag.Equals("Player"))
-        {
-            playerinrange = true;
-        }
-        else
-        {
-            playerinrange = false;
-        }
-    }
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    if(other.gameObject.tag.Equals("Player"))
+    //    {
+    //        playerinrange = true;
+    //    }
+    //    else
+    //    {
+    //        playerinrange = false;
+    //    }
+    //}
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerinrange = false;
-            openplayersInventory.SetActive(false);
-        }
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        playerinrange = false;
+    //        openshopInventory.SetActive(false);
+    //    }
+    //}
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PResourceManager : MonoBehaviour
 {
@@ -10,17 +11,38 @@ public class PResourceManager : MonoBehaviour
 
     public GameObject nearest, customerset;
 
+    private GameObject interactText, magicIcons;
+
+    private CinemachineBrain brain;
+
     // Start is called before the first frame update
     void Start()
     {
         nearest = null;
 
         Inventory = gameObject.GetComponent<Inventory>();
+
+        interactText = GameObject.FindGameObjectWithTag("InteractText");
+
+        interactText.SetActive(false);
+
+        magicIcons = GameObject.FindGameObjectWithTag("SpellList");
+
+        brain = Camera.main.GetComponent<CinemachineBrain>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(brain.ActiveVirtualCamera.Name != "Main_ThirdPersonCamera")
+        {
+            magicIcons.SetActive(false);
+        }
+        else
+        {
+            magicIcons.SetActive(true);
+        }
+
         if(NearResources != null)
         {
             if(nearest != null)
@@ -104,24 +126,32 @@ public class PResourceManager : MonoBehaviour
             case "Resource":
                 NearResources.Add(other.gameObject);
                 nearest = approximate(NearResources);
+                interactText.SetActive(true);
                 break;
             case "CraftTable":
                 other.GetComponent<CraftingTable>().inrange = true;
+                interactText.SetActive(true);
                 break;
             case "Shelf":
+                interactText.SetActive(true);
                 other.gameObject.GetComponent<ShelfHolder>().opened = true;
                 break;
             case "Door":
                 other.gameObject.GetComponent<Animator>().SetBool("IsNear", true);
                 break;
             case "Till":
-                if(customerset.GetComponent<CustomerSpawn>().CustomerCount > 0)
+                interactText.SetActive(true);
+                if (customerset.GetComponent<CustomerSpawn>().CustomerCount > 0)
                 {
                     other.GetComponent<TillControl>().SwitchCam();
                     other.GetComponent<TillControl>().player = gameObject;
                     other.GetComponent<TillControl>().open = true;
                     gameObject.GetComponent<PlayerMovement>().cutscene = true;
                 }
+                break;
+            case "StatShop":
+                interactText.SetActive(true);
+                other.GetComponent<HealThePlayer>().playerinrange = true;
                 break;
         }
         
@@ -136,15 +166,25 @@ public class PResourceManager : MonoBehaviour
             case "Resource":
                 NearResources.Remove(other.gameObject);
                 other.gameObject.GetComponent<Resource>().selectable = false;
+                interactText.SetActive(false);
                 break;
             case "CraftTable":
                 other.GetComponent<CraftingTable>().inrange = false;
+                interactText.SetActive(false);
                 break;
             case "Shelf":
                 other.gameObject.GetComponent<ShelfHolder>().opened = false;
+                interactText.SetActive(false);
                 break;
             case "Door":
                 other.gameObject.GetComponent<Animator>().SetBool("IsNear", false);
+                break;
+            case "Till":
+                interactText.SetActive(false);
+                break;
+            case "StatShop":
+                interactText.SetActive(false);
+                other.GetComponent<HealThePlayer>().playerinrange = false;
                 break;
         }
     }

@@ -14,11 +14,11 @@ public class MonsterSpawner : MonoBehaviour
     public bool stopspawning;
     int randomenemey;
     public int maxenemeys;
-    public int enemeysspawned=0;
+    public int enemeysspawned = 0;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(spawnerrespawntimer());
+        //StartCoroutine(spawnerrespawntimer());
         
     }
 
@@ -34,6 +34,32 @@ public class MonsterSpawner : MonoBehaviour
         {
             stopspawning = false;
         }
+
+        if(GameObject.Find("MC_Male") != null)
+        {
+            if (stopspawning == true)
+            {
+                randomenemey = Random.Range(0, 3);
+
+                Vector3 spawnpoistions = new Vector3(Random.Range(-spawnvalues.x, spawnvalues.x), 5, Random.Range(-spawnvalues.z, spawnvalues.z));
+                Instantiate(Monster[randomenemey], spawnpoistions + transform.TransformPoint(0, 0, 0), gameObject.transform.rotation);
+
+                enemeysspawned++;
+            }
+        }
+        else if(GameObject.Find("MC_FemaleFullRig") != null)
+        {
+            if(stopspawning == true)
+            {
+                randomenemey = Random.Range(0, 3);
+
+                Vector3 spawnpoistions = new Vector3(Random.Range(-spawnvalues.x, spawnvalues.x), 5, Random.Range(-spawnvalues.z, spawnvalues.z));
+                Instantiate(Monster[randomenemey], spawnpoistions + transform.TransformPoint(0, 0, 0), gameObject.transform.rotation);
+
+                enemeysspawned++;
+            }
+        }
+
     }
 
   
@@ -45,7 +71,7 @@ public class MonsterSpawner : MonoBehaviour
         {
             randomenemey = Random.Range(0,3);
 
-            Vector3 spawnpoistions = new Vector3(Random.Range(-spawnvalues.x, spawnvalues.x), 1, Random.Range(-spawnvalues.z, spawnvalues.z));
+            Vector3 spawnpoistions = new Vector3(Random.Range(-spawnvalues.x, spawnvalues.x), 5, Random.Range(-spawnvalues.z, spawnvalues.z));
             Instantiate(Monster[randomenemey], spawnpoistions + transform.TransformPoint(0, 0, 0), gameObject.transform.rotation);
 
             yield return new WaitForSeconds(spawnwaittime);
